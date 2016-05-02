@@ -1,16 +1,5 @@
 'use strict';
-
-// Declare app level module which depends on views, and components
-angular.module('myApp', [
-    'ngRoute'
-    // 'myApp.view1',
-    // 'myApp.view2',
-]);
-// ]);.config(['$routeProvider', function ($routeProvider) {
-//     $routeProvider.otherwise({redirectTo: '/view1'});
-// }]);
-
-angular.module('myApp')
+angular.module('myApp',[])
     .controller('appController', function ($scope) {
         $scope.projects = [
             {
@@ -29,5 +18,9 @@ angular.module('myApp')
                 imgSrc: "http://www.freeimageslive.com/galleries/backdrops/fractal/pics/fractal_cubes_cyan.jpg"
             }
         ];
+        $scope.goToProjectDetails = function (project) {
+            //open github repository in new tab
+            console.log('details for ' + project.name);
+        }
     });
 

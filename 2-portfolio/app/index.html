@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <!--<link rel="stylesheet" href="bower_components/bootstrap-social/bootstrap-social.css">-->
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 
@@ -37,14 +39,15 @@
                     <div class="carousel-caption">
                         <h1 ng-bind="project.name"></h1>
                         <p ng-bind="project.description"></p>
-                        <button class="btn btn-default">More...</button>
+                        <button class="btn btn-default" ng-click="goToProjectDetails(project)">More...</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="about" class="text-center about">Hello! My name is Nailya. I'm C# programmer. And I participate at <a href="www.freecodecamp.com">FreeCodeCamp
+    <div id="about" class="text-center about">Hello! My name is Nailya. I'm C# programmer. And I participate at <a
+            href="https://www.freecodecamp.com">FreeCodeCamp
         Project</a>.
         <p>You can find information about my projects below.</p>
     </div>
@@ -55,23 +58,33 @@
                 <img class="img-circle circle" src="{{project.imgSrc}}"/>
                 <h1 ng-bind="project.name"></h1>
                 <p ng-bind="project.description"></p>
-                <button class="btn btn-default">More...</button>
+                <button class="btn btn-default" ng-click="goToProjectDetails(project)">More...</button>
             </div>
 
         </div>
     </div>
-    <!-- In production use:
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-    -->
-</div>
 
+</div>
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="http://www.freeimages.co.uk" rel="nofollow" target="_top"
+                   title="Download free stock photography">www.freeimages.co.uk</a>
+            </li>
+            <li>
+                <a href="https://github.com/Nerielle">
+                    <i class="fa fa-github" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="app.js"></script>
-<!--<script src="view1/view1.js"></script>-->
-<!--<script src="view2/view2.js"></script>-->
 
 </body>
 </html>
