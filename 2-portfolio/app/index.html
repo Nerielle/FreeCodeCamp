@@ -10,31 +10,61 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+
 </head>
-<body>
-<ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Contact me</a></li>
-</ul>
+<body ng-app="myApp">
+<!--<ul class="nav nav-tabs">-->
+<!--<li role="presentation"><a href="#">Profile</a></li>-->
+<!--<li role="presentation"><a href="#">Contact me</a></li>-->
+<!--</ul>-->
 
-<ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-</ul>
+<div>Hello! My name is Nailya. I'm C# programmer. And I participate at <a href="www.freecodecamp.com">FreeCodeCamp
+    Project</a>.
+</div>
+<div ng-controller="appController">
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item" ng-class="{active: $first}" ng-repeat="project in projects">
+                <img src="{{project.imgSrc}}"/>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1 ng-bind="project.name"></h1>
+                        <p ng-bind="project.description"></p>
+                        <button class="btn btn-default">More...</button>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4" ng-repeat="project in projects">
+                <img class="img-circle circle" src="{{project.imgSrc}}"/>
+                <h1 ng-bind="project.name"></h1>
+                <p ng-bind="project.description"></p>
+                <button class="btn btn-default">More...</button>
+            </div>
 
-<div ng-view></div>
+        </div>
+    </div>
+    <!-- In production use:
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+</div>
 
-
-<!-- In production use:
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="app.js"></script>
-<script src="view1/view1.js"></script>
-<script src="view2/view2.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <!--<script src="view1/view1.js"></script>-->
+    <!--<script src="view2/view2.js"></script>-->
 
 </body>
 </html>
