@@ -13,14 +13,16 @@
 
 </head>
 <body ng-app="myApp">
-<!--<ul class="nav nav-tabs">-->
-<!--<li role="presentation"><a href="#">Profile</a></li>-->
-<!--<li role="presentation"><a href="#">Contact me</a></li>-->
-<!--</ul>-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <ul class="nav navbar-nav navbar-right">
+            <li role="presentation"><a href="#about">About me</a></li>
+            <li role="presentation"><a href="#projects">Projects</a></li>
+        </ul>
+    </div>
 
-<div>Hello! My name is Nailya. I'm C# programmer. And I participate at <a href="www.freecodecamp.com">FreeCodeCamp
-    Project</a>.
-</div>
+</nav>
+
 <div ng-controller="appController">
     <div id="carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -37,12 +39,17 @@
                         <p ng-bind="project.description"></p>
                         <button class="btn btn-default">More...</button>
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
+    <div id="about" class="text-center about">Hello! My name is Nailya. I'm C# programmer. And I participate at <a href="www.freecodecamp.com">FreeCodeCamp
+        Project</a>.
+        <p>You can find information about my projects below.</p>
+    </div>
+    <hr/>
+    <div class="container" id="projects">
         <div class="row">
             <div class="col-lg-4" ng-repeat="project in projects">
                 <img class="img-circle circle" src="{{project.imgSrc}}"/>
@@ -58,13 +65,13 @@
     -->
 </div>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="app.js"></script>
-    <!--<script src="view1/view1.js"></script>-->
-    <!--<script src="view2/view2.js"></script>-->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="app.js"></script>
+<!--<script src="view1/view1.js"></script>-->
+<!--<script src="view2/view2.js"></script>-->
 
 </body>
 </html>
