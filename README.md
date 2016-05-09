@@ -13,3 +13,10 @@ Web works accordingly to FreeCodeCamp's tasks.
 <li>Font awesome 4.5.0</li>
 <li>Angular 1.4.0</li>
 </ul>
+
+<h3>1 - Get a quote - Random Quote Machine</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>Font awesome 4.6.2</li>
+</ul>
+Quotes are provided by http://quotesondesign.com.
