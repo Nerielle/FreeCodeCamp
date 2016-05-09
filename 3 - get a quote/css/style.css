@@ -1,0 +1,64 @@
+body {
+    background: #ffff66;
+}
+
+.container {
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 20px;
+    background: #f3ffcc;
+    height: auto;
+    width: 450px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quote {
+    color: #009933;
+    font-size: 1.5em;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.quote > p {
+    display: inline-block;
+}
+
+.quote > .content {
+    margin: 20px 20px auto 20px;
+}
+
+.quote > .content::before {
+    content: open-quote;
+    font-size: 2em;
+    vertical-align: -0.25em;
+
+}
+
+.quote > .content::after {
+    content: close-quote;
+    font-size: 2em;
+    vertical-align: -0.6em;
+}
+
+.quote > .author {
+    margin: 10px 20px 10px auto;
+}
+.buttons{
+    margin: 10px 20px 20px auto;
+}
+.buttons .new-quote {
+    background: #009933;
+    border-radius: 7px;
+    height: 32px;
+    width: 100px;
+    border: none;
+    color: white;
+
+}
