@@ -12,9 +12,8 @@ body {
     width: 450px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
-    align-items: center;
+    align-items: stretch;
     flex-direction: column;
-    justify-content: center;
 }
 
 .quote {
@@ -51,14 +50,22 @@ body {
     margin: 10px 20px 10px auto;
 }
 .buttons{
-    margin: 10px 20px 20px auto;
+    margin: 10px 20px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
 }
 .buttons .new-quote {
     background: #009933;
-    border-radius: 7px;
-    height: 32px;
+    border-radius: 4px;
+    height: 28px;
     width: 100px;
     border: none;
     color: white;
+    /*margin: 0 0 0 auto;*/
+}
+.twitter-share-button{
 
+    /*margin: 0 auto 0 0;*/
 }
