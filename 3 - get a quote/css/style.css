@@ -29,43 +29,46 @@ body {
     display: inline-block;
 }
 
-.quote > .content {
+#content {
     margin: 20px 20px auto 20px;
 }
 
-.quote > .content::before {
+#content::before {
     content: open-quote;
     font-size: 2em;
     vertical-align: -0.25em;
 
 }
 
-.quote > .content::after {
+#content::after {
     content: close-quote;
     font-size: 2em;
     vertical-align: -0.6em;
 }
 
-.quote > .author {
+#author {
     margin: 10px 20px 10px auto;
 }
-.buttons{
+
+.buttons {
     margin: 10px 20px 20px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     align-content: space-between;
 }
-.buttons .new-quote {
+
+button {
     background: #009933;
     border-radius: 4px;
     height: 28px;
     width: 100px;
     border: none;
     color: white;
-    /*margin: 0 0 0 auto;*/
+    cursor: pointer;
 }
-.twitter-share-button{
 
-    /*margin: 0 auto 0 0;*/
+.twitter-share-button {
+    color: #1da1f2;
+    cursor: pointer;
 }
