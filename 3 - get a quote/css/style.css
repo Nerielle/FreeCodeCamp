@@ -67,8 +67,13 @@ button {
     color: white;
     cursor: pointer;
 }
-
+button:hover{
+    background-color: rgba(0,204,68,0.8)
+}
 .twitter-share-button {
     color: #1da1f2;
     cursor: pointer;
+}
+.twitter-share-button:hover{
+    opacity:0.8;
 }
