@@ -25,8 +25,9 @@ body {
     flex-direction: column;
 }
 
-.quote > p {
+.quote p {
     display: inline-block;
+    line-height: 1em;
 }
 
 #content {
