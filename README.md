@@ -28,5 +28,5 @@ Quotes are provided by http://quotesondesign.com.
 <li>AngularJS 1.5.8</li>
 <li>Weather Icons 2.0.9</li>
 </ul>
-Weather API: //api.openweathermap.org
-Current location API: //ip-api.com
+<p>Weather API: //api.openweathermap.org.</p>
+<p>Current location API: //ip-api.com.</p>
