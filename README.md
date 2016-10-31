@@ -21,7 +21,7 @@ Web works accordingly to FreeCodeCamp's tasks.
 </ul>
 Quotes are provided by http://quotesondesign.com.
 
-<h3>1 - Shiny - Weather Forecast</h3>
+<h3>4 - Shiny - Weather Forecast</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>JQuery 3.1.0</li>
