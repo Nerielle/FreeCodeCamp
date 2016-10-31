@@ -1,0 +1,43 @@
+.content{
+   position: relative;
+  margin: 2rem;
+  text-align: center; 
+  top: 10rem;
+}
+
+.wi{ 
+  display:inline-block;
+  margin-left: 0.1rem;
+  height:1.5rem;
+  width:1.5rem;
+}
+.city{
+  font-size: 3rem;
+}
+.main {
+  font-size: 5rem;
+  margin: 1.5rem 0;
+}
+.info{
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+}
+.main .wi{
+   margin-right: 5rem;
+   margin-left:0;
+  }
+
+a{
+  color:ivory;
+  text-decoration:none;
+}
+body{
+  color: ivory;
+  background-color:midnightblue	;
+background-image:
+radial-gradient(ivory, rgba(255,255,240,.2) 1px, transparent 30px),
+radial-gradient(rgba(255,255,240,.5), rgba(255,255,240,.15) 1px, transparent 20px),
+radial-gradient(rgba(255,255,240,.04), rgba(255,255,240,.02) 1px, transparent 20px);
+background-size: 550px 550px, 300px 350px, 450px 450px; 
+background-position: 0 0, 40px 60px, 130px 270px;
+}
