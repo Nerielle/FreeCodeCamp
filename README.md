@@ -20,3 +20,13 @@ Web works accordingly to FreeCodeCamp's tasks.
 <li>Font awesome 4.6.2</li>
 </ul>
 Quotes are provided by http://quotesondesign.com.
+
+<h3>1 - Shiny - Weather Forecast</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>JQuery 3.1.0</li>
+<li>AngularJS 1.5.8</li>
+<li>Weather Icons 2.0.9</li>
+</ul>
+Weather API: //api.openweathermap.org
+Current location API: //ip-api.com
