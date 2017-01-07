@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>WikiSearch</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="less/style.css"> </head>
+
+<body>
+    <div ng-app='wikiSearch' ng-controller='wikiController as ctrl'> 
+        <div class="center">
+            <a class="random" target='_blank' href='https://en.wikipedia.org/wiki/Special:Random'>Get random article</a>
+            <div class="input-group">
+                <input name='searchBox' ng-model='searchStr' type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click='ctrl.search()'>Go!</button>
+                </span>
+            </div>
+            <div class="results" ng-repeat='page in results'>
+                <a class="page-tile" ng-href='{{page.link}}' target="_blank">
+                    <div class="title">{{page.title}}</div>
+                    <div>{{page.body}}</div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
