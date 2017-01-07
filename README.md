@@ -30,3 +30,11 @@ Quotes are provided by http://quotesondesign.com.
 </ul>
 <p>Weather API: //api.openweathermap.org.</p>
 <p>Current location API: //ip-api.com.</p>
+
+<h3>5 - WikiSearch - Wiki API</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>AngularJS 1.5.8</li>
+<li>Bootstrap 3.3.7</li>
+</ul>
+
