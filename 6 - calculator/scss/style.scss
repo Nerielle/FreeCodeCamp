@@ -1,0 +1,73 @@
+$small-margin:5px;
+$width: 140px;
+$margin: 40px;
+$padding: 15px;
+$font: 13px;
+#calc {
+    font-size: 13px;
+    box-sizing: content-box;
+    margin-left: $margin;
+    margin-top: $margin;
+    padding: $padding;
+    border: 2px solid;
+    width: $width;
+    background-color: beige;
+    #screen {
+        position: relative;
+        width: $width;
+        height: 60px;
+        background-color: black;
+        input {
+            text-align: right;
+            position: absolute;
+            bottom: $small-margin;
+            right: $small-margin *2;
+            width: $width - $small-margin *2;
+            height: 20px;
+            outline: none;
+            border: none;
+            background-color: black;
+            color: white;
+            font-size: 20px;
+        }
+        #recent {
+            position: relative;
+            height: 20px;
+            border: none;
+            font-size: $font;
+            display: block;
+            top: 0;
+            right: $small-margin;
+            margin: 0;
+            text-align: right;
+            color: white;
+        }
+    }
+    .row {
+        font-size: 0;
+        &.first-row div,
+        & div:last-child {
+            background-color: burlywood;
+        }
+        div {
+            font-size: $font;
+            background-color: lightgray;
+            box-sizing: border-box;
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            vertical-align: center;
+            text-align: center;
+            border: 1px solid black;
+        }
+        #zero {
+            text-align: right;
+            padding-right: $small-margin;
+            width: 70px;
+        }
+        #clear {
+            width: 70px;
+        }
+    }
+}
