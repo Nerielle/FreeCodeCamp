@@ -38,3 +38,10 @@ Quotes are provided by http://quotesondesign.com.
 <li>Bootstrap 3.3.7</li>
 </ul>
 
+<h3>6 - Calculator (operations have no priority)</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>AngularJS 1.5.8</li>
+<li>Sass</li>
+</ul>
+
