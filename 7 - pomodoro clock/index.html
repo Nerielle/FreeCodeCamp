@@ -5,17 +5,25 @@
     <meta charset="UTF-8">
     <title>Pomodoro clock</title>
     <link rel="stylesheet" href="scss/style.css">
-
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
 </head>
 
 <body>
     <div id='clock' ng-app='clock' ng-controller="clockController as ctrl">
-        <input ng-model='ctrl.break' type='number'>
-        <input ng-model='ctrl.work' type='number'>
-        <button ng-click='ctrl.start()'>Start!</button>
-        <button ng-click='ctrl.stop()'>Stop</button>
-        <div class="timer">{{ctrl.time}}</div>
-        <div ng-show='ctrl.isBreakTime'>It's a break time!</div>
+        <div class="inputs">
+            <input min="1" ng-model='ctrl.break' type='number' placeholder="Breaks">
+            <input min="1" ng-model='ctrl.work' type='number' placeholder="Work">
+        </div>
+        <div class="timer">
+            {{ctrl.time}}
+        </div>
+        <div ng-show='ctrl.isBreakTime'>
+            It's a break time!
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-default" ng-click='ctrl.start()'>Start!</button>
+            <button class="btn btn-danger" ng-click='ctrl.stop()'>Stop</button>
+        </div>
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js'></script>
 

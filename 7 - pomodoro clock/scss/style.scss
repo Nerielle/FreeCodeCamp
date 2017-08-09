@@ -1,5 +1,31 @@
 #clock {
+    margin: auto;
+    width: 50%;
+    margin-top: 100px;
+    text-align: center;
     .timer {
         font-size: 5em;
+    }
+    .inputs {
+        display: inline-block;
+        >* {
+            display: inline;
+            margin: .2rem;
+            padding: .5rem .75rem;
+            font-size: 1rem;
+            line-height: 1.25;
+            color: #464a4c;
+            border: 1px solid rgba(0, 0, 0, .15) {
+                radius: .25rem;
+            }
+        }
+    }
+    .btn-group {
+        .btn {
+            margin: 0.5em;
+        }
+    }
+    .form-control {
+        margin: 0.5em;
     }
 }
