@@ -5,20 +5,24 @@
     <meta charset="UTF-8">
     <title>Pomodoro clock</title>
     <link rel="stylesheet" href="scss/style.css">
+    <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css">-->
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
 </head>
 
 <body>
     <div id='clock' ng-app='clock' ng-controller="clockController as ctrl">
         <div class="inputs">
-            <input min="1" ng-model='ctrl.break' type='number' placeholder="Breaks">
-            <input min="1" ng-model='ctrl.work' type='number' placeholder="Work">
+            <div class="form-group">
+                <label for='breakInput'>Break length (min)</label>
+                <input id='breakInput' min="1" ng-model='ctrl.break' type='number' placeholder="Breaks"></div>
+            <label for='workInput'>Session length (min)</label>
+            <input id='workInput' min="1" ng-model='ctrl.work' type='number' placeholder="Work">
         </div>
-        <div class="timer">
+        <div class="timer" ng-class="{'timer-break': ctrl.isBreakTime}">
             {{ctrl.time}}
         </div>
-        <div ng-show='ctrl.isBreakTime'>
-            It's a break time!
+        <div class="break" ng-show='ctrl.isBreakTime'>
+            <img src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f483.png"> It's a break time!
         </div>
         <div class="btn-group">
             <button class="btn btn-default" ng-click='ctrl.start()'>Start!</button>

@@ -3,21 +3,32 @@
     width: 50%;
     margin-top: 100px;
     text-align: center;
+    .break {}
     .timer {
         font-size: 5em;
+        &-break {
+            color: green;
+        }
     }
     .inputs {
         display: inline-block;
-        >* {
+        label {
+            font-weight: 500;
+        }
+        input {
             display: inline;
             margin: .2rem;
             padding: .5rem .75rem;
-            font-size: 1rem;
-            line-height: 1.25;
             color: #464a4c;
+            width: 3.5em;
             border: 1px solid rgba(0, 0, 0, .15) {
                 radius: .25rem;
             }
+        }
+        label,
+        input {
+            line-height: 1.25;
+            font-size: 1rem;
         }
     }
     .btn-group {
