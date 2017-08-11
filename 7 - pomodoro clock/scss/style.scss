@@ -3,7 +3,10 @@
     width: 50%;
     margin-top: 100px;
     text-align: center;
-    .break {}
+    .break {
+        position: relative;
+        left: -10em;
+    }
     .timer {
         font-size: 5em;
         &-break {

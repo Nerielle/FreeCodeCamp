@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Pomodoro clock</title>
     <link rel="stylesheet" href="scss/style.css">
-    <!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/css/emojione.min.css">-->
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css'>
 </head>
 
@@ -21,7 +20,7 @@
         <div class="timer" ng-class="{'timer-break': ctrl.isBreakTime}">
             {{ctrl.time}}
         </div>
-        <div class="break" ng-show='ctrl.isBreakTime'>
+        <div class="break" ng-show='ctrl.isBreakTime == false'>
             <img src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/png/1f483.png"> It's a break time!
         </div>
         <div class="btn-group">
@@ -29,6 +28,7 @@
             <button class="btn btn-danger" ng-click='ctrl.stop()'>Stop</button>
         </div>
     </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js'></script>
 
     <script src="js/index.js"></script>

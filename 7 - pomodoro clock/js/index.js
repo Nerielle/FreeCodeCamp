@@ -3,19 +3,23 @@ app.controller('clockController', clockController);
 
 function clockController($interval) {
     var controller = this;
+    var animation;
+    var breakElement;
+
     activate();
 
     function activate() {
         controller.break = 1;
-        controller.work = 2;
+        controller.work = 1;
         controller.time = secondsToHms(controller.work * 60);
         controller.isBreakTime = false;
         controller.currentSeconds = controller.work * 60;
+        breakElement = $('.break');
+
 
         controller.start = start;
         controller.stop = stop;
         controller.clock = undefined;
-
     }
 
     function secondsToHms(seconds) {
@@ -36,10 +40,12 @@ function clockController($interval) {
             if (controller.currentSeconds === 0 && !controller.isBreakTime) {
                 controller.isBreakTime = true;
                 controller.currentSeconds = controller.break * 60;
+                animation = $interval(moveItMoveIt, 1000);
                 return;
             }
             if (controller.currentSeconds === 0 && controller.isBreakTime) {
                 controller.isBreakTime = false;
+                animation = undefined;
                 controller.currentSeconds = controller.work * 60;
                 return;
             }
@@ -48,8 +54,17 @@ function clockController($interval) {
         }, 1000);
     }
 
+    function moveItMoveIt() {
+        var currentVal = breakElement.css('left');
+        console.log(currentVal);
+
+    }
+
     function stop() {
         console.log('stop');
         $interval.cancel(controller.clock);
+        if (animation != undefined) {
+            $interval.cancel(animation);
+        }
     }
 }
