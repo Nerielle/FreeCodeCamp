@@ -13,9 +13,9 @@
         <div class="inputs">
             <div class="form-group">
                 <label for='breakInput'>Break length (min)</label>
-                <input id='breakInput' min="1" ng-model='ctrl.break' type='number' placeholder="Breaks"></div>
+                <input id='breakInput' min="1" ng-model='ctrl.break' ng-change="ctrl.reset()" ng-disabled="ctrl.canChangePomodoro()" type='number' placeholder="Breaks"></div>
             <label for='workInput'>Session length (min)</label>
-            <input id='workInput' min="1" ng-model='ctrl.work' type='number' placeholder="Work">
+            <input id='workInput' min="1" ng-model='ctrl.work' ng-change="ctrl.reset()" ng-disabled="ctrl.canChangePomodoro()" type='number' placeholder="Work">
         </div>
         <div class="timer" ng-class="{'timer-break': ctrl.isBreakTime}">
             {{ctrl.time}}

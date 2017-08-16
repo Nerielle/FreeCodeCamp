@@ -16,10 +16,20 @@ function clockController($interval) {
         controller.currentSeconds = controller.work * 60;
         breakElement = $('.break');
 
-
+        controller.canChangePomodoro = canChangePomodoro;
         controller.start = start;
         controller.stop = stop;
+        controller.reset = reset;
         controller.clock = undefined;
+    }
+
+    function canChangePomodoro() {
+        return controller.clock !== undefined;
+    }
+
+    function reset() {
+        controller.time = secondsToHms(0);
+        controller.isBreakTime = false;
     }
 
     function secondsToHms(seconds) {
@@ -64,6 +74,8 @@ function clockController($interval) {
     function stop() {
         console.log('stop');
         $interval.cancel(controller.clock);
+        controller.clock = undefined;
+        console.log(controller.clock);
         if (animation != undefined) {
             $interval.cancel(animation);
         }
