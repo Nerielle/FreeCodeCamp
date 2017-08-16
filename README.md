@@ -45,3 +45,12 @@ Quotes are provided by http://quotesondesign.com.
 <li>Sass</li>
 </ul>
 
+<h3>7 - Pomodoro clock</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>AngularJS 1.6.5</li>
+<li>JQuery 3.2.1</li>
+<li>Bootstrap 4.0.0-alpha</li>
+<li>Sass</li>
+</ul>
+
