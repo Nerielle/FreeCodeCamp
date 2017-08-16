@@ -5,7 +5,8 @@
     text-align: center;
     .break {
         position: relative;
-        left: -10em;
+        left: -40px;
+        transition: all ease-in-out 3s;
     }
     .timer {
         font-size: 5em;

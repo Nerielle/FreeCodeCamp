@@ -40,7 +40,7 @@ function clockController($interval) {
             if (controller.currentSeconds === 0 && !controller.isBreakTime) {
                 controller.isBreakTime = true;
                 controller.currentSeconds = controller.break * 60;
-                animation = $interval(moveItMoveIt, 1000);
+                animation = $interval(moveItMoveIt, 4000);
                 return;
             }
             if (controller.currentSeconds === 0 && controller.isBreakTime) {
@@ -55,9 +55,10 @@ function clockController($interval) {
     }
 
     function moveItMoveIt() {
-        var currentVal = breakElement.css('left');
-        console.log(currentVal);
-
+        var left = breakElement.css('left');
+        var currentVal = parseInt(left.substr(0, left.length - 2));
+        var newValue = currentVal == -40 ? 40 : -40;
+        breakElement.css('left', newValue + 'px');
     }
 
     function stop() {
