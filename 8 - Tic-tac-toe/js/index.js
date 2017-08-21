@@ -38,7 +38,7 @@ function appController() {
         };
 
         controller.isPlayer1Turn = true;
-        controller.onePlayerGame = false;
+        controller.onePlayerGame = true;
         controller.gameOver = '';
         controller.play = play;
 
@@ -60,6 +60,7 @@ function appController() {
         if (!controller.isPlayer1Turn && controller.onePlayerGame) {
             //delay
             selectNextCell();
+            isGameOver();
             controller.isPlayer1Turn = !controller.isPlayer1Turn;
         }
     }
@@ -76,8 +77,7 @@ function appController() {
             }
 
         });
-        console.log('X', crosses);
-        console.log('O', noughts);
+
 
         _.forEach(winRows, winRow => {
             var intersectWithCrosses = _.intersection(winRow, crosses);
@@ -85,18 +85,18 @@ function appController() {
 
             if (intersectWithCrosses.length === 3) {
                 controller.gameOver = 'Crosses won!'
-                return true;
+                return;
             }
             if (intersectWithNoughts === 3) {
                 controller.gameOver = "Noughts won!";
-                return true;
+                return;
             }
             if (crosses.length + noughts.length === 9) {
                 controller.gameOver = "Draw!";
-                return true;
+                return;
             }
         });
-        return false;
+
 
     }
 
@@ -126,6 +126,7 @@ function appController() {
                 controller.currentPosition[third] = player2Sign;
             }
             //or any empty cell in a row
+            console.log(controller.currentPosition);
         });
     }
 }
