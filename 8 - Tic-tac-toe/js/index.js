@@ -101,6 +101,31 @@ function appController() {
     }
 
     function selectNextCell() {
+        var crosses = [];
+        var noughts = [];
+        _.forOwn(controller.currentPosition, (value, key) => {
+            if (value === player1Sign) {
+                crosses.push(key);
+            } else if (value === player2Sign) {
+                noughts.push(key);
+            }
 
+        });
+
+        _.forEach(winRows, winRow => {
+            var intersectWithCrosses = _.intersection(winRow, crosses);
+            var intersectWithNoughts = _.intersection(winRow, noughts);
+
+            if (intersectWithCrosses.length === 2) {
+
+                var third = _.difference(winRow, intersectWithCrosses);
+                controller.currentPosition[third] = player2Sign;
+            }
+            if (intersectWithNoughts === 2) {
+                var third = _.difference(winRow, intersectWithNoughts);
+                controller.currentPosition[third] = player2Sign;
+            }
+            //or any empty cell in a row
+        });
     }
 }
