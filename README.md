@@ -54,3 +54,13 @@ Quotes are provided by http://quotesondesign.com.
 <li>Sass</li>
 </ul>
 
+
+<h3>8 - Tic-tac-toe</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>AngularJS 1.6.5</li>
+<li>JQuery 3.2.1</li>
+<li>Lodash 4.17.4</li>
+<li>Sass</li>
+</ul>
+
