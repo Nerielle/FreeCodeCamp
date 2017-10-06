@@ -4,40 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Tic Tac Toe</title>
-
-
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
-
-    <link rel="stylesheet" href="scss/style.css">
-
-
-</head>
+    <link rel="stylesheet" href="scss/style.css"> </head>
 
 <body>
     <div class="app" ng-app="tictactoe" ng-controller="appController as ctrl">
-        <div class="board-row">
-            <span id="one" ng-click="ctrl.play(1)">{{ctrl.currentPosition[1]}}</span>
-            <span id="two" ng-click="ctrl.play(2)">{{ctrl.currentPosition[2]}}</span>
-            <span id="three" ng-click="ctrl.play(3)">{{ctrl.currentPosition[3]}}</span>
-        </div>
-        <div class="board-row">
-            <span id="four" ng-click="ctrl.play(4)">{{ctrl.currentPosition[4]}}</span>
-            <span id="five" ng-click="ctrl.play(5)">{{ctrl.currentPosition[5]}}</span>
-            <span id="six" ng-click="ctrl.play(6)">{{ctrl.currentPosition[6]}}</span>
-        </div>
-        <div class="board-row">
-            <span id="seven" ng-click="ctrl.play(7)">{{ctrl.currentPosition[7]}}</span>
-            <span id="eight" ng-click="ctrl.play(8)">{{ctrl.currentPosition[8]}}</span>
-            <span id="nine" ng-click="ctrl.play(9)">{{ctrl.currentPosition[9]}}</span>
-        </div>
-
+        <div class="board-row"> <span id="one" ng-click="ctrl.play(1)">{{ctrl.currentPosition[1]}}</span> <span id="two" ng-click="ctrl.play(2)">{{ctrl.currentPosition[2]}}</span> <span id="three" ng-click="ctrl.play(3)">{{ctrl.currentPosition[3]}}</span> </div>
+        <div class="board-row"> <span id="four" ng-click="ctrl.play(4)">{{ctrl.currentPosition[4]}}</span> <span id="five" ng-click="ctrl.play(5)">{{ctrl.currentPosition[5]}}</span> <span id="six" ng-click="ctrl.play(6)">{{ctrl.currentPosition[6]}}</span> </div>
+        <div class="board-row"> <span id="seven" ng-click="ctrl.play(7)">{{ctrl.currentPosition[7]}}</span> <span id="eight" ng-click="ctrl.play(8)">{{ctrl.currentPosition[8]}}</span> <span id="nine" ng-click="ctrl.play(9)">{{ctrl.currentPosition[9]}}</span> </div>
         <div>{{ctrl.gameOver}}</div>
+        <div ng-show='ctrl.gameOver' ng-click='ctrl.start()'>New game</div>
+        <div ng-show='ctrl.showSignSelection'> <span ng-click='ctrl.setPlayerSign("X")'>'X'</span> OR <span ng-click='ctrl.setPlayerSign("O")'>'O'</span> </div>
     </div>
     <script src=' https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js '></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js '></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
     <script src="js/index.js"></script>
-
 </body>
 
 </html>
