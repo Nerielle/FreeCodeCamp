@@ -5,12 +5,15 @@
     padding-top: 30px;
     width: 200px;
     height: 200px;
+    font-size: 14px;
     .board-row {
         span {
             width: 30px;
             height: 30px;
             display: inline-block;
             text-align: center;
+            line-height: 30px;
+            vertical-align: middle;
         }
     }
     #two,
