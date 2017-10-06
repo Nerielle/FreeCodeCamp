@@ -50,7 +50,6 @@ function appController($timeout) {
             , 9: ''
         };
         controller.isPlayer1Turn = true;
-        controller.onePlayerGame = true;
         controller.gameOver = '';
         controller.showSignSelection = true;
     }
@@ -76,7 +75,7 @@ function appController($timeout) {
             return;
         }
         controller.isPlayer1Turn = !controller.isPlayer1Turn;
-        if (controller.isPlayer1Turn === false && controller.onePlayerGame) {
+        if (controller.isPlayer1Turn === false) {
             $timeout(function () {
                 selectNextCell();
                 console.log('end', controller.currentPosition);
