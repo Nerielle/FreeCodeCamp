@@ -1,10 +1,63 @@
 body {
     background-color: lightgoldenrodyellow;
     .green-btn {
+        position: relative;
         background-color: green;
+        border-top: 10px solid black;
+        border-left: 10px solid black;
+        border-bottom: 5px solid black;
+        border-right: 5px solid black;
+        height: 100px;
+        width: 100px;
+        border-top-left-radius: 120px;
+    }
+    .red-btn {
+        position: relative;
+        left: 115px;
+        top: -115px;
+        background-color: red;
+        border-top: 10px solid black;
+        border-right: 10px solid black;
+        border-left: 5px solid black;
+        border-bottom: 5px solid black;
+        height: 100px;
+        width: 100px;
+        border-top-right-radius: 120px;
+    }
+    .yellow-btn {
+        position: relative;
+        top: -115px;
+        background-color: yellow;
+        border-top: 5px solid black;
+        border-left: 10px solid black;
+        border-bottom: 10px solid black;
+        border-right: 5px solid black;
+        height: 100px;
+        width: 100px;
+        border-bottom-left-radius: 120px;
+    }
+    .blue-btn {
+        position: relative;
+        left: 115px;
+        top: -230px;
+        background-color: blue;
+        border-top: 5px solid black;
+        border-right: 10px solid black;
+        border-bottom: 10px solid black;
+        border-left: 5px solid black;
+        height: 100px;
+        width: 100px;
+        border-bottom-right-radius: 120px;
+    }
+    .circle {
+        background: white;
         border: 10px solid black;
-        height: 80px;
-        width: 80px;
-        
+        border-radius: 120px;
+        height: 100px;
+        width: 100px;
+        top: -405px;
+        left: 60px;
+        position: relative;
+        z-index: 1000;
     }
 }
