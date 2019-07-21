@@ -1,12 +1,22 @@
 body {
     text-align: center;
     font-family: URW Chancery L, cursive;
+    font-size: 10px;
 }
 
 section {
+    font-size: 1.5rem;
     text-align: left;
+    width: 80%;
+    margin: auto;
 }
 
 img {
     margin: auto;
+    width: 80%;
+}
+
+figcaption {
+    font-size: 1rem;
+    margin-top: 0.5rem;
 }
