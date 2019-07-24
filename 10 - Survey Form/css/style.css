@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+    font-family: URW Chancery L, monospace;
+    font-size: 10px;
+    line-height: 2rem;
+}
+
+form {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    p {
+        margin: 0;
+    }
+    textarea {
+        width: 5rem;
+        align-self: center;
+    }
+}
+
+button {
+    width: 5rem;
+    align-self: center;
+    margin-top: 2rem;
+}
