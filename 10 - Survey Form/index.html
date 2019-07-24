@@ -21,22 +21,28 @@
                 <label id="number-label">Age</label>
                 <input id="number" placeholder="Age" type="number" min="18" max="99"> </div>
             <div>
-                <label for="occupation">Ocupation</label>
+                <label for="occupation">Occupation</label>
                 <select id="occupation" name='dropdown'>
                     <option value="student">Student</option>
-                    <option value="employer">Employer</option>
+                    <option id="dropdown" value="employer">Employer</option>
                     <option value="other">Other</option>
                 </select>
             </div>
             <div>
                 <p>Select the desired employment schedule:</p>
-                <input type="radio" id="full" name="employment" value="full" checked>
+                <input type="checkbox" id="full" name="employment" value="full" checked>
                 <label for="full">Full day</label>
-                <input type="radio" name="employment" value="part" id="part">
+                <input type="checkbox" name="employment" value="part" id="part">
                 <label for="part">Part time</label>
-                <input type="radio" name="employment" value="flexible">
+                <input type="checkbox" name="employment" value="flexible">
                 <label for="flexible">Flexible</label>
             </div>
+            <div>
+                <p>Do you have biometric passport:</p>
+                <label for="yes">Yes</label>
+                <input type="radio" name="passport" value="yes" id="yes">
+                <label for="no">No</label>
+                <input type="radio" name="passport" value="no" checked> </div>
             <div>
                 <label for="comments">What also should we know about you?</label>
                 <textarea id="comments"></textarea>
