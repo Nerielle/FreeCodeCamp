@@ -8,7 +8,7 @@
 
 <body>
     <main>
-        <h1 id='title'>Candidate appliance form</h1>
+        <h1 id='title'>Candidate appliance</h1>
         <p id='description'>Please, give us some information about you</p>
         <form id='survey-form'>
             <div>
@@ -22,9 +22,9 @@
                 <input id="number" placeholder="Age" type="number" min="18" max="99"> </div>
             <div>
                 <label for="occupation">Occupation</label>
-                <select id="occupation" name='dropdown'>
+                <select id="dropdown" name='dropdown'>
                     <option value="student">Student</option>
-                    <option id="dropdown" value="employer">Employer</option>
+                    <option value="employer">Employer</option>
                     <option value="other">Other</option>
                 </select>
             </div>
@@ -45,9 +45,10 @@
                 <input type="radio" name="passport" value="no" checked> </div>
             <div>
                 <label for="comments">What also should we know about you?</label>
-                <textarea id="comments"></textarea>
             </div>
+            <textarea id="comments"></textarea>
             <button id="submit" type="submit">Submit</button>
+            <p id='msg'>We'll contact you within 10 work days</p>
         </form>
     </main>
 </body>

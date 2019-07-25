@@ -1,25 +1,49 @@
 body {
     text-align: center;
-    font-family: URW Chancery L, monospace;
+    font-family: Arial, serif;
     font-size: 10px;
     line-height: 2rem;
+    background-color: bisque;
+}
+
+main {
+    font-size: 1.3rem;
 }
 
 form {
     display: flex;
     align-items: stretch;
     flex-direction: column;
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 1rem 5rem 1rem 5rem;
     p {
         margin: 0;
-    }
-    textarea {
-        width: 5rem;
-        align-self: center;
     }
 }
 
 button {
-    width: 5rem;
+    width: 6rem;
     align-self: center;
-    margin-top: 2rem;
+    margin: 2rem 0;
+    height: 2rem;
+    border-radius: 0.5rem;
+}
+
+button:hover {
+    background-color: burlywood;
+}
+
+#comments {
+    align-self: center;
+    display: block;
+    width: 65%;
+}
+
+#dropdown {
+    height: 1.8rem;
+}
+
+#msg {
+    font-size: 1rem;
 }
