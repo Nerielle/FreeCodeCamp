@@ -3,23 +3,27 @@ body {
     font-family: Arial, serif;
     font-size: 10px;
     line-height: 2rem;
-    background-color: bisque;
 }
 
 main {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 form {
     display: flex;
     align-items: stretch;
     flex-direction: column;
-    background-color: white;
     border-radius: 0.5rem;
-    margin: 1rem 5rem 1rem 5rem;
-    p {
-        margin: 0;
-    }
+    margin: 1rem 10rem 1rem 10rem;
+    border: 5px outset rgba(28, 110, 164, 0.42);
+}
+
+div:first-child {
+    margin-top: 1rem;
+}
+
+.top-margin {
+    margin: 1em 0 0 0;
 }
 
 button {
@@ -37,7 +41,7 @@ button:hover {
 #comments {
     align-self: center;
     display: block;
-    width: 65%;
+    width: 45%;
 }
 
 #dropdown {
@@ -45,5 +49,5 @@ button:hover {
 }
 
 #msg {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
