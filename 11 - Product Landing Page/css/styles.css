@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @media(max-width:1000px) {
     #slogan {
         font-size: 3.5rem;
@@ -16,6 +17,7 @@
 
 body {
     font-size: 10px;
+    font-family: 'Raleway', sans-serif;
 }
 
 #header-img {
@@ -120,7 +122,7 @@ nav {
 }
 
 .video {
-    background-color: black;
+    background-color: #1a3300;
 }
 
 #video {
@@ -129,9 +131,18 @@ nav {
 }
 
 #features {
-    background-color: black;
+    background-color: #1a3300;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature {
+    font-size: 1.5rem;
 }
 
 #pricing {
-    background-color: #77b300;
+    background-color: white;
 }
