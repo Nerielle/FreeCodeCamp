@@ -2,6 +2,10 @@
     #slogan {
         font-size: 3.5rem;
     }
+    #video {
+        width: 600px;
+        height: 300px;
+    }
 }
 
 @media(min-width:1000px) {
@@ -20,9 +24,11 @@ body {
 }
 
 header {
+    /*
     display: grid;
     grid-template-columns: 45px auto;
     grid-auto-rows: 47px 28rem;
+*/
 }
 
 .header {
@@ -34,24 +40,43 @@ header {
     flex-direction: row;
 }
 
+section {
+    height: 28rem;
+    margin-bottom: 20px;
+}
+
 #header-img {
     display: block;
+    position: fixed;
 }
 
 nav {
+    background-color: white;
+    width: 100%;
     height: 47px;
     font-size: 1.3rem;
+    position: fixed;
+    left: 45px;
 }
 
 .nav-link {
     line-height: 47px;
     vertical-align: middle;
     margin: 0 15px;
+    text-decoration: none;
+    color: black;
 }
 
+.nav-link:hover {
+    color: #558000;
+}
+
+
+/*
 .nav-link:first-child {
     margin-left: 0;
 }
+*/
 
 .header-frm-el {
     display: block;
@@ -99,6 +124,14 @@ nav {
 }
 
 #video {
-    margin: 20px auto;
+    margin: 0 auto;
     display: block;
+}
+
+#features {
+    background-color: black;
+}
+
+#pricing {
+    background-color: #77b300;
 }
