@@ -65,4 +65,5 @@ Quotes are provided by http://quotesondesign.com.
 Plain css project - https://codepen.io/nerielle/pen/bXdjRK
 <h3>11 - Product Landing Page</h3>
 Plain css project - https://codepen.io/nerielle/pen/OKZLpg
-
+<h3>12 - Technical Doc Project</h3>
+Plain css project from "Responsive Web Design Projects" challenge
