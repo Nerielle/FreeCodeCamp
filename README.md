@@ -1,7 +1,7 @@
 # FreeCodeCamp
 Web works accordingly to FreeCodeCamp's tasks.
 <h3>1 - Tribute - simple web-page</h3>
-Introduction to Html5
+Introduction to Html5. Plain css project - https://codepen.io/nerielle/pen/xVjPaQ
 
 <h3>2 -Portfolio</h3>
 <h5>Dependencies</h5>
@@ -60,4 +60,9 @@ Quotes are provided by http://quotesondesign.com.
 <li>Lodash 4.17.4</li>
 <li>Sass</li>
 </ul>
+<h3>9 - Simon Game</h3>
+<h3>10 - Survey Form</h3>
+Plain css project - https://codepen.io/nerielle/pen/bXdjRK
+<h3>11 - Product Landing Page</h3>
+Plain css project - https://codepen.io/nerielle/pen/OKZLpg
 
