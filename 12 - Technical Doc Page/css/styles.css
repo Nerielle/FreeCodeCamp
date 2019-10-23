@@ -2,8 +2,38 @@
 body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: space-around;
+    justify-content: space-around;
 }
 
 header {
     font-size: 2rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: space-between;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+
+
+/*
+nav a:checked,
+nav a:active {
+    color: black;
+}
+*/
+
+code {
+    display: block;
 }
