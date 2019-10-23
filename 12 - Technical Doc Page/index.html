@@ -3,10 +3,149 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>12 - Technical Doc Page/title>
-        <link rel="stylesheet" href="css/styles.css"> </head>
+    <title>12 - Technical Doc Page</title>
+    <link rel="stylesheet" href="css/styles.css"> </head>
 
 <body>
+    <main id="main-doc">
+        <section class="main-section" id='Introducton'>
+            <header>Introducton</header>
+            <article>
+                <p> Redux is a predictable state container for JavaScript apps.</p>
+                <p> It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. On top of that, it provides a great developer experience, such as live code editing combined with a time traveling debugger.</p>
+                <p> You can use Redux together with React, or with any other view library. It is tiny (2kB, including dependencies), but has a large ecosystem of addons available.</p>
+            </article>
+        </section>
+        <section class="main-section" id='Installation'>
+            <header>Installation</header>
+            <article>
+                <p>Redux is available as a package on NPM for use with a module bundler or in a Node application:</p> <code class="console">npm install --save redux</code>
+                <p>It is also available as a precompiled UMD package that defines a window.Redux global variable. The UMD package can be used as a &ltscript&gt tag directly.</p>
+            </article>
+        </section>
+        <section class="main-section" id='Redux_Starter_Kit'>
+            <header>Redux Starter Kit</header>
+            <article>
+                <p>Redux itself is small and unopinionated. We also have a separate package called redux-starter-kit, which includes some opinionated defaults that help you use Redux more effectively.</p>
+                <p>It helps simplify a lot of common use cases, including store setup, creating reducers and writing immutable update logic, and even creating entire "slices" of state at once.</p>
+                <p> Whether you're a brand new Redux user setting up your first project, or an experienced user who wants to simplify an existing application, redux-starter-kit can help you make your Redux code better.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Basic_Example">
+            <header>Basic Example</header>
+            <article>
+                <p>The whole state of your app is stored in an object tree inside a single store. </p>
+                <p>The only way to change the state tree is to emit an action, an object describing what happened. </p>
+                <p>To specify how the actions transform the state tree, you write pure reducers. </p> <code class="javascript">import { createStore } from 'redux'
+
+/**
+ * This is a reducer, a pure function with (state, action) => state signature.
+ * It describes how an action transforms the state into the next state.
+ *
+ * The shape of the state is up to you: it can be a primitive, an array, an object,
+ * or even an Immutable.js data structure. The only important part is that you should
+ * not mutate the state object, but return a new object if the state changes.
+ *
+ * In this example, we use a `switch` statement and strings, but you can use a helper that
+ * follows a different convention (such as function maps) if it makes sense for your
+ * project.
+ */
+function counter(state = 0, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1
+    case 'DECREMENT':
+      return state - 1
+    default:
+      return state
+  }
+}
+
+// Create a Redux store holding the state of your app.
+// Its API is { subscribe, dispatch, getState }.
+let store = createStore(counter)
+
+// You can use subscribe() to update the UI in response to state changes.
+// Normally you'd use a view binding library (e.g. React Redux) rather than subscribe() directly.
+// However it can also be handy to persist the current state in the localStorage.
+
+store.subscribe(() => console.log(store.getState()))
+
+// The only way to mutate the internal state is to dispatch an action.
+// The actions can be serialized, logged or stored and later replayed.
+store.dispatch({ type: 'INCREMENT' })
+// 1
+store.dispatch({ type: 'INCREMENT' })
+// 2
+store.dispatch({ type: 'DECREMENT' })
+// 1</code>
+                <p>Instead of mutating the state directly, you specify the mutations you want to happen with plain objects called actions. Then you write a special function called a reducer to decide how every action transforms the entire application's state.</p>
+                <p>In a typical Redux app, there is just a single store with a single root reducing function. As your app grows, you split the root reducer into smaller reducers independently operating on the different parts of the state tree. This is exactly like how there is just one root component in a React app, but it is composed out of many small components.</p>
+                <p>This architecture might seem like an overkill for a counter app, but the beauty of this pattern is how well it scales to large and complex apps. It also enables very powerful developer tools, because it is possible to trace every mutation to the action that caused it. You can record user sessions and reproduce them just by replaying every action.</p>
+            </article>
+        </section>
+        <section class="main-section" id='Core_Concepts'>
+            <header>Core Concepts</header>
+            <article>
+                <p>Imagine your app’s state is described as a plain object. For example, the state of a todo app might look like this:</p> <code class="javascript">{
+  todos: [{
+    text: 'Eat food',
+    completed: true
+  }, {
+    text: 'Exercise',
+    completed: false
+  }],
+  visibilityFilter: 'SHOW_COMPLETED'
+}</code>
+                <p>This object is like a “model” except that there are no setters. This is so that different parts of the code can’t change the state arbitrarily, causing hard-to-reproduce bugs.</p>
+                <p>To change something in the state, you need to dispatch an action. An action is a plain JavaScript object (notice how we don’t introduce any magic?) that describes what happened. Here are a few example actions:</p> <code class="javascript">{ type: 'ADD_TODO', text: 'Go to swimming pool' }
+{ type: 'TOGGLE_TODO', index: 1 }
+{ type: 'SET_VISIBILITY_FILTER', filter: 'SHOW_ALL' }</code>
+                <p>Enforcing that every change is described as an action lets us have a clear understanding of what’s going on in the app. If something changed, we know why it changed. Actions are like breadcrumbs of what has happened. Finally, to tie state and actions together, we write a function called a reducer. Again, nothing magical about it—it’s just a function that takes state and action as arguments, and returns the next state of the app. It would be hard to write such a function for a big app, so we write smaller functions managing parts of the state:</p> <code class="javascript">function visibilityFilter(state = 'SHOW_ALL', action) {
+  if (action.type === 'SET_VISIBILITY_FILTER') {
+    return action.filter
+  } else {
+    return state
+  }
+}
+
+function todos(state = [], action) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return state.concat([{ text: action.text, completed: false }])
+    case 'TOGGLE_TODO':
+      return state.map((todo, index) =>
+        action.index === index
+          ? { text: todo.text, completed: !todo.completed }
+          : todo
+      )
+    default:
+      return state
+  }
+}</code>
+                <p>And we write another reducer that manages the complete state of our app by calling those two reducers for the corresponding state keys:</p> <code class="javascript">function todoApp(state = {}, action) {
+  return {
+    todos: todos(state.todos, action),
+    visibilityFilter: visibilityFilter(state.visibilityFilter, action)
+  }
+}</code>
+                <p>This is basically the whole idea of Redux. Note that we haven’t used any Redux APIs. It comes with a few utilities to facilitate this pattern, but the main idea is that you describe how your state is updated over time in response to action objects, and 90% of the code you write is just plain JavaScript, with no use of Redux itself, its APIs, or any magic.</p>
+            </article>
+        </section>
+        <section class="main-section" id="Real-World_Usage">
+            <header>Real-World Usage</header>
+            <article>
+                <p>Going from a TodoMVC app to a real production application can be a big jump, but we've got plenty of resources to help:</p>
+                <ul>
+                    <li>Redux creator Dan Abramov's free "Building React Applications with Idiomatic Redux" video series builds on his first video series and covers topics like middleware, routing, and persistence.</li>
+                    <li>The Redux FAQ answers many common questions about how to use Redux, and the "Recipes" docs section has information on handling derived data, testing, structuring reducer logic, and reducing boilerplate.</li>
+                    <li>Redux co-maintainer Mark Erikson's "Practical Redux" tutorial series demonstrates real-world intermediate and advanced techniques for working with React and Redux (also available as an interactive course on Educative.io).</li>
+                    <li>The React/Redux links list has categorized articles on working with reducers and selectors, managing side effects, Redux architecture and best practices, and more.</li>
+                    <li>Our community has created thousands of Redux-related libraries, addons, and tools. The "Ecosystem" docs page lists our recommendations, and there's a complete listing available in the Redux addons catalog.</li>
+                </ul>
+            </article>
+        </section>
+    </main>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 
