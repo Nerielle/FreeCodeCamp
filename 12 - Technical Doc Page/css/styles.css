@@ -1,12 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+@media(min-width:800px) {
+    body {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    nav {
+        margin-right: 3rem;
+    }
+}
+
+@media(max-width:800px) {
+    body {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav {
+        margin-top: 1.5rem;
+        align-items: center;
+    }
+    main {
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
+    }
+}
+
 body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 15px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: space-around;
-    justify-content: space-around;
+    /*    flex-wrap: nowrap;*/
+    background: #ffffe7;
+    color: #3d5c5c;
 }
 
 header {
@@ -16,24 +40,27 @@ header {
 nav {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    align-content: space-between;
+    border-radius: 4%;
 }
 
 nav a {
     text-decoration: none;
     color: black;
+    display: block;
     font-size: 1.5rem;
 }
 
-
-/*
-nav a:checked,
-nav a:active {
-    color: black;
-}
-*/
-
 code {
     display: block;
+    text-align: left;
+    white-space: pre;
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1;
+    background-color: black;
+    color: white;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
 }
