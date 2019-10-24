@@ -15,20 +15,15 @@
         align-items: center;
     }
     nav {
-        margin-top: 1.5rem;
         align-items: center;
-    }
-    main {
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
     }
 }
 
 body {
     font-family: 'Ubuntu', sans-serif;
+    padding-top: 1.5rem;
     font-size: 15px;
     display: flex;
-    /*    flex-wrap: nowrap;*/
     background: #ffffe7;
     color: #3d5c5c;
 }
@@ -41,13 +36,23 @@ nav {
     display: flex;
     flex-direction: column;
     border-radius: 4%;
+    line-height: 2.5rem;
 }
 
 nav a {
     text-decoration: none;
-    color: black;
+    color: #3d5c5c;
     display: block;
     font-size: 1.5rem;
+}
+
+main {
+    width: 100%;
+    line-height: 1.5rem;
+}
+
+#Introduction header {
+    line-height: 2.5rem;
 }
 
 code {
