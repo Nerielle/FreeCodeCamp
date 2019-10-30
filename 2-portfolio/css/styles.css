@@ -52,15 +52,17 @@ nav a {
 .projects-grid {
     background: black;
     width: 90%;
-    height: 85%;
+    height: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
 .project-tile {
     width: 33%;
     height: 50%;
-}
-
-.projects-grid a {
     font-size: 1.3rem;
     line-height: 2rem;
     display: block;
@@ -68,10 +70,14 @@ nav a {
 }
 
 img {
+    height: 100%;
     width: 100%;
-    height: 80%;
-    object-fit: scale-down;
+    object-fit: cover;
+    display: block;
+    /*
+    object-fit: fill;
     object-position: center center;
+*/
 }
 
 figcaption {
@@ -79,8 +85,20 @@ figcaption {
 }
 
 #contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: #ff6145;
     height: 85vh;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+i {
+    padding-right: 10px;
 }
 
 #codepen-profile {
@@ -90,4 +108,10 @@ figcaption {
 footer {
     background: black;
     height: 7vh;
+    width: 100%;
+}
+
+footer span {
+    float: right;
+    margin: 2vh;
 }
