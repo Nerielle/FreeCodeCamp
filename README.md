@@ -6,10 +6,9 @@ Introduction to Html5. Plain css project - https://codepen.io/nerielle/pen/xVjPa
 <h3>2 -Portfolio</h3>
 <h5>Dependencies</h5>
 <ul>
-<li>Bootstrap 3.3.6</li>
-<li>Font awesome 4.5.0</li>
-<li>Angular 1.4.0</li>
+<li>Font awesome</li>
 </ul>
+Plain css project from "Responsive Web Design Projects" challenge https://codepen.io/nerielle/full/MyBqbO
 
 <h3>1 - Get a quote - Random Quote Machine</h3>
 <h5>Dependencies</h5>
