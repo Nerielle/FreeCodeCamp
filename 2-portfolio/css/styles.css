@@ -10,14 +10,11 @@
 }
 
 @media ( min-width: 680px) {
-    #projects {
-        height: 100vh;
-    }
     .projects-grid {
-        flex-direction: column;
+        flex-direction: row;
     }
     .project-tile {
-        width: 33%;
+        width: 45%;
         height: 50%;
     }
 }
@@ -27,6 +24,10 @@ body {
     font-family: 'Roboto', sans-serif;
     color: white;
     line-height: 1.5;
+}
+
+section {
+    padding-left: 20px;
 }
 
 header {
@@ -47,7 +48,9 @@ nav {
     z-index: 100;
 }
 
-a {
+a,
+a:hover,
+a:checked {
     text-decoration: none;
     color: white;
 }
@@ -75,6 +78,11 @@ nav a {
     flex-direction: column;
 }
 
+#projects header,
+div {
+    margin: 20px;
+}
+
 .projects-grid {
     background: black;
     width: 90%;
@@ -84,6 +92,10 @@ nav a {
     align-items: center;
     align-content: center;
     flex-wrap: wrap;
+}
+
+.projects-grid a {
+    margin: 15px;
 }
 
 .project-tile {
@@ -98,10 +110,6 @@ img {
     width: 100%;
     object-fit: cover;
     display: block;
-    /*
-    object-fit: fill;
-    object-position: center center;
-*/
 }
 
 figcaption {
