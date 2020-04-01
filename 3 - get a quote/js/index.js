@@ -1,34 +1,43 @@
 $(document).ready(function () {
-    $.ajaxSetup({cache: false});
+    $.ajaxSetup({
+        cache: false
+    });
     getNewQuote();
 });
+var quotes = [];
 $('.twitter-share-button').click(function () {
-    window.open('https://twitter.com/intent/tweet?text="' +
-        $('#content').text() + '" ' +
-        $('#author').text());
+    window.open('https://twitter.com/intent/tweet?text="' + $('#text').text() + '" ' + $('#author').text());
 });
 $('button').click(function () {
     getNewQuote();
 });
-function changeText(response) {
-    var content = $(response.content).text();
-    $("#content").text(content);
-    $("#author").text(response.title);
+
+function changeText() {
+    var quote = quotes.pop();
+    $("#text").text(quote.text);
+    $("#author").text(quote.author);
+    console.log(quotes.length);
 }
 
 function getNewQuote() {
-    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function (a) {
-        var quote = $('.quote');
-        if ($("#content").text() == "") {
-            changeText(a[0])
-        } else {
-            quote.addClass('animated hinge');
-            quote.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
-                changeText(a[0]);
-                quote.removeClass('animated hinge');
+    if (quotes.length != 0) {
+        changeText();
+        return;
+    }
+    $.getJSON('https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand', function (result) {
+        console.log('New result from server', result);
+        if (result == null || result.length == 0) {
+            new Error('There server is not responding. Try again later.')
+        }
+        if (quotes.length === 0) {
+            quotes = result.map(x => {
+                let quote = {
+                    text: x.content.rendered
+                    , author: x.title.rendered
+                }
+                return quote;
             });
         }
-
+        changeText();
     });
 }
-

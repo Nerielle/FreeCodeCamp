@@ -1,31 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Get a Quote</title>
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-</head>
+    <title>CodePen - Get a Quote</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
+    <link rel='stylesheet' href='https://netdna.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.css'>
+    <link rel="stylesheet" href="css/style.css"> </head>
 
 <body>
-
-<div class='container'>
-    <div class='quote'>
-        <p id="content"></p>
-        <p id="author"></p>
+    <!-- partial:index.partial.html -->
+    <div id='quote-box' class='container'>
+        <div class='quote'>
+            <p id='text'></p>
+            <p id="author"></p>
+        </div>
+        <div class="buttons">
+            <a id='tweet-quote' class="twitter-share-button"> <span class="fa-stack fa-lg">
+				<i class="fa fa-square-o fa-stack-2x"></i>
+				<i class="fa fa-twitter fa-stack-1x"></i>
+			</span> </a>
+            <button id="new-quote">New One!</button>
+        </div>
     </div>
-    <div class="buttons">
-        <a class="twitter-share-button">
-            <span class="fa-stack fa-lg">
-            <i class="fa fa-square-o fa-stack-2x"></i>
-            <i class="fa fa-twitter fa-stack-1x"></i>
-            </span>
-        </a>
-        <button class="new-quote">New One!</button>
-    </div>
-</div>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-<script src="js/index.js"></script>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+    <script src='https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js'>
+    </script>
+    <!--    <script src="js/script.js"></script>-->
+    <script src="js/index.js"></script>
 </body>
+
 </html>
