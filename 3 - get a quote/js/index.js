@@ -4,24 +4,27 @@ $(document).ready(function () {
     });
     getNewQuote();
 });
+const projectName = "random-quote-machine";
+localStorage.setItem('example_project', 'Randowm Quote Machine');
 var quotes = [];
 var quoteText = $("#text")
-$('.twitter-share-button').click(function () {
-    window.open('https://twitter.com/intent/tweet?text="' + $('#text').text() + '" ' + $('#author').text());
-});
+const errorClass = 'error';
 $('button').click(function () {
     getNewQuote();
 });
 
-function changeText(quote) {
-    quoteText.prepend(quote);
+function changeText(quote, author = '') {
+    quoteText.text(quote);
+    $("#author").text(author);
 }
 
 function changeQuote() {
     var quote = quotes.pop();
-    changeText(quote.text);
-    $("#author").text(quote.author);
     console.log(quotes.length);
+    var text = jQuery(quote.text).text();
+    changeText(text, quote.author);
+    $('.twitter-share-button').attr('href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent('"' + text + '" ' + quote.author));
+    quoteText.removeClass('error');
 }
 
 function getNewQuote() {
@@ -33,7 +36,7 @@ function getNewQuote() {
         try {
             console.log('New result from server', result);
             if (result == null || result.length == 0) {
-                throw new Error('<p>The server is not responding. Try again later.</p>')
+                throw new Error('The server is not responding. Try again later.');
             }
             if (quotes.length === 0) {
                 quotes = result.map(x => {
@@ -48,7 +51,8 @@ function getNewQuote() {
         }
         catch (error) {
             console.log(error);
-            changeText(error);
+            changeText(error.message);
+            quoteText.addClass(errorClass);
         }
     });
 }
