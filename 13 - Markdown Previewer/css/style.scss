@@ -1,0 +1,17 @@
+section {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    #editor,
+    #preview {
+        margin: 5px;
+        height: 100vh;
+    }
+    #editor {
+        flex-basis: 50%;
+    }
+    #preview {
+        flex-basis: 50%;
+        border: black solid 1px;
+    }
+}
