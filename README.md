@@ -10,12 +10,14 @@ Introduction to Html5. Plain css project - https://codepen.io/nerielle/pen/xVjPa
 </ul>
 Plain css project from "Responsive Web Design Projects" challenge https://codepen.io/nerielle/full/MyBqbO
 
-<h3>1 - Get a quote - Random Quote Machine</h3>
+<h3>3 - Get a quote - Random Quote Machine</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>Font awesome 4.6.2</li>
+  <li>jQuery 2.2.2</li>
 </ul>
 Quotes are provided by http://quotesondesign.com.
+Had been fixed according a new task on Freecodecamp.com. In action: http://codepen.io/nerielle/pen/KzJzZa
 
 <h3>4 - Shiny - Weather Forecast</h3>
 <h5>Dependencies</h5>
@@ -66,3 +68,4 @@ Plain css project - https://codepen.io/nerielle/pen/bXdjRK
 Plain css project - https://codepen.io/nerielle/pen/OKZLpg
 <h3>12 - Technical Doc Project</h3>
 Plain css project from "Responsive Web Design Projects" challenge https://codepen.io/nerielle/pen/bGGqvdr
+<h3> 13 - Markdown Previewer</h3>
