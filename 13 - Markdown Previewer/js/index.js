@@ -1,8 +1,5 @@
-
 const projectName = "markdown-previewer";
 localStorage.setItem('example_project', 'Markdown Previewer');
-
-
 
 
 const defaultText = `# Welcome to Markdown Previewer!
@@ -80,6 +77,7 @@ class PreviewComponent extends React.Component {
                 
             
         }
-                    }
- ReactDOM.render(<AppComponent />, containerElement
+}
+
+ReactDOM.render(<AppComponent />, containerElement
                    );

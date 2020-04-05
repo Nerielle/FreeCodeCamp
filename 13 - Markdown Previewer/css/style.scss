@@ -1,11 +1,15 @@
+#container{
+    height: 100%;
+}
 section {
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    height: 100%;
     #editor,
     #preview {
         margin: 5px;
-        height: 100vh;
+       padding: 5px;
     }
     #editor {
         flex-basis: 50%;
@@ -13,5 +17,14 @@ section {
     #preview {
         flex-basis: 50%;
         border: black solid 1px;
+        pre  , code  {
+            background: #1a1a00;
+            color: antiquewhite;
+        }
+    }
+    img{
+        height: 100px;
+        width: 100px;
+        
     }
 }
