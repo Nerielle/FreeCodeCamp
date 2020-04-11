@@ -56,8 +56,7 @@ class DrumPad extends React.Component{
         super(props);
     }
     playAudio(){
-        //console.log('hey',e);
-        //console.log(this.props.clip);
+        
         var element = document.getElementById(this.props.idPad);
         element.currentTime = 0;
     element.play();
@@ -67,7 +66,7 @@ class DrumPad extends React.Component{
     render(){
         return (
             <div  className='drum-pad'  onClick={this.playAudio.bind(this)}>
-        <audio id={this.props.idPad} className='clip' controls>
+        <audio id={this.props.idPad} className='clip'>
             <source src={this.props.clip} />
             </audio>
             {this.props.idPad} 

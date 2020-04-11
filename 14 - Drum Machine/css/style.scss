@@ -1,0 +1,32 @@
+
+body{
+    height: 100vh;
+}
+#container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid green;
+    height: 100%;
+}
+#drum-machine{
+    padding: 0.5rem;;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+
+    width: 14rem;
+    height: 17rem;
+    border: 1px solid blue;
+}
+.drum-pad{
+    background: blue;
+    width: 4rem;
+    height: 4rem;
+    text-align: center;
+    
+    &:hover{
+        background:#00e699;
+    }
+}
