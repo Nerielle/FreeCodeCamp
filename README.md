@@ -69,3 +69,11 @@ Plain css project - https://codepen.io/nerielle/pen/OKZLpg
 <h3>12 - Technical Doc Project</h3>
 Plain css project from "Responsive Web Design Projects" challenge https://codepen.io/nerielle/pen/bGGqvdr
 <h3> 13 - Markdown Previewer</h3>
+
+<h5>Dependencies</h5>
+<ul>
+<li>React</li>
+<li>https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.2/marked.min.js - markdown parser</li>
+<li>Sass</li>
+</ul>
+Simple React app from Freecodecamp Challenge - https://codepen.io/nerielle/pen/BaNgdWW
