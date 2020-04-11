@@ -2,16 +2,17 @@
 const projectName='drum-machine'
 localStorage.setItem('example_project','Drum Machine');
  const pads = [
+       {
+         id: 'q_pad',
+         key: 'Q',
+         clip:'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Wersimat%2024/95[kb]wersi-bdhh1.aif.mp3'
+     },
      {
         id: 'w_pad',
          key: 'W',
         clip: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Wersimat%2024/33[kb]wersi-bd1.aif.mp3'
      },
-     {
-         id: 'q_pad',
-         key: 'Q',
-         clip:'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Wersimat%2024/95[kb]wersi-bdhh1.aif.mp3'
-     },
+   
      {
          id: 'e_pad',
          key: 'E',
@@ -54,11 +55,23 @@ class DrumPad extends React.Component{
     constructor(props){
         super(props);
     }
+    playAudio(){
+        //console.log('hey',e);
+        //console.log(this.props.clip);
+        var element = document.getElementById(this.props.idPad);
+        element.currentTime = 0;
+    element.play();
+    }
+    
+  
     render(){
         return (
-        <audio controls>
+            <div  className='drum-pad'  onClick={this.playAudio.bind(this)}>
+        <audio id={this.props.idPad} className='clip' controls>
             <source src={this.props.clip} />
             </audio>
+            {this.props.idPad} 
+            </div>
         );
     }
 }
@@ -66,10 +79,14 @@ class AppComponent extends React.Component{
     constructor(props){
         super(props);
     }
+  playAudio(p){
+        console.log('hey',p);
+
+    }
     render(){
-        var items = pads.map(p => <DrumPad clip={p.clip} key={p.key} />);
+        var items = pads.map(p => <DrumPad clip={p.clip} key={p.id} idPad={p.key} play={this.playAudio(p)}/>);
         return (
-                             <ul>{items}</ul>);
+                             <ul id='drum-machine'>{items}</ul>);
     }
 }
 var container = document.getElementById('container');
