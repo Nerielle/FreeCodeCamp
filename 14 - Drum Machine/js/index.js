@@ -43,14 +43,14 @@ localStorage.setItem('example_project','Drum Machine');
          id: 'd_pad'
          , key: 'D'
          , code: 68
-         , name: ''
+         , name: 'wersira2'
          , clip: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Wersimat%2024/60[kb]wersira2.aif.mp3'
      }
      , {
          id: 'z_pad'
          , key: 'Z'
          , code: 90
-         , name: 'wersira2'
+         , name: 'wersishak1'
          , clip: 'https://sampleswap.org/samples-ghost/DRUMS%20(FULL%20KITS)/DRUM%20MACHINES/Wersimat%2024/26[kb]wersishak1.aif.mp3'
      }
      , {
@@ -70,11 +70,18 @@ localStorage.setItem('example_project','Drum Machine');
  , ];
 
 function playSound(id, name) {
-    var padElement = document.getElementById(id);
+    let className = 'active';
+    var audioElement = document.getElementById(id);
+    var padElement = document.getElementById(name);
+    padElement.classList.add(className)
+    
+    
     var displayElement = document.getElementById('display');
     displayElement.innerHTML=name;
-    padElement.currentTime = 0;
-    padElement.play();
+    audioElement.currentTime = 0;
+    audioElement.play();
+    setTimeout(()=> padElement.classList.remove(className), 100);
+   
 }
 
 class DrumPad extends React.Component{
@@ -105,7 +112,8 @@ class AppComponent extends React.Component{
 handleKeyPress(event){
    var padsFiltered = pads.filter(p=> p.code === event.keyCode);
     if(padsFiltered.length ===0) return;
-    playSound(padsFiltered[0].key, padsFiltered[0].name);
+    let drumPad = padsFiltered[0];    
+    playSound(drumPad.key, drumPad.name);
     
 }
     
