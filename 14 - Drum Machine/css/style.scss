@@ -15,18 +15,30 @@ body{
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
+    grid-gap: 0.5rem;
 
     width: 14rem;
     height: 17rem;
     border: 1px solid blue;
+    
+    & > * {
+           text-align: center;
+        vertical-align: middle;
+    }
 }
 .drum-pad{
     background: blue;
     width: 4rem;
     height: 4rem;
-    text-align: center;
-    
+ line-height: 4rem;
     &:hover{
         background:#00e699;
     }
+}
+#display{
+    border: 1px solid blue;
+    width: 12rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+     grid-column: 1 / span 3;
 }
