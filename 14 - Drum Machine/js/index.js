@@ -88,9 +88,9 @@ class DrumPad extends React.Component{
   
     render(){
         return (
-            <div  className='drum-pad'  onClick={this.play.bind(this)}>
-        <audio id={this.props.idPad} className='clip'>
-            <source src={this.props.clip} />
+            <div id={this.props.name}  className='drum-pad'  onClick={this.play.bind(this)}>
+        <audio id={this.props.idPad} className='clip' src={this.props.clip} >
+            
             </audio>
             {this.props.idPad} 
             </div>

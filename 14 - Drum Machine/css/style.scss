@@ -2,6 +2,13 @@
 body{
     height: 100vh;
 }
+footer{
+    display: relative;
+    bottom:10px;
+    right: 20px ;
+    position: fixed;
+    z-index: 20;
+}
 #container{
     display: flex;
     align-items: center;
