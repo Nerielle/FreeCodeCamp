@@ -68,8 +68,8 @@ Plain css project - https://codepen.io/nerielle/pen/bXdjRK
 Plain css project - https://codepen.io/nerielle/pen/OKZLpg
 <h3>12 - Technical Doc Project</h3>
 Plain css project from "Responsive Web Design Projects" challenge https://codepen.io/nerielle/pen/bGGqvdr
-<h3> 13 - Markdown Previewer</h3>
 
+<h3> 13 - Markdown Previewer</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>React</li>
@@ -77,3 +77,11 @@ Plain css project from "Responsive Web Design Projects" challenge https://codepe
 <li>Sass</li>
 </ul>
 Simple React app from Freecodecamp Challenge - https://codepen.io/nerielle/pen/BaNgdWW
+
+<h3>Simple Drum Machine</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>React</li>
+<li>Sass</li>
+</ul>
+Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/full/xxwbzJB - here it is in action
