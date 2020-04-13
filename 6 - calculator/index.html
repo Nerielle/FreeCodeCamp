@@ -16,41 +16,42 @@
     <div id='calc' ng-app='calc' ng-controller='calcController as ctrl'>
         <div id='screen'>
             <div id='recent' ng-bind='ctrl.recent'></div>
-            <input type='text' ng-value='ctrl.value'>
+            <input id='display' type='text' ng-value='ctrl.value'>
         </div>
         <div class="row first-row">
             <div id="clear" ng-click="ctrl.clear()">Clear</div>
             <div id="sign" ng-click="ctrl.addSign()">+/-</div>
-            <div id="div" ng-click="ctrl.divide()">/</div>
+            <div id="divide" ng-click="ctrl.divide()">/</div>
 
         </div>
         <div class="row">
-            <div id=7 ng-click="ctrl.number(7)">7</div>
-            <div id=8 ng-click="ctrl.number(8)">8</div>
-            <div id=9 ng-click="ctrl.number(9)">9</div>
-            <div id='multi' ng-click="ctrl.multiply()">*</div>
+            <div id='seven' ng-click="ctrl.number(7)">7</div>
+            <div id='eight' ng-click="ctrl.number(8)">8</div>
+            <div id='nine' ng-click="ctrl.number(9)">9</div>
+            <div id='multiply' ng-click="ctrl.multiply()">*</div>
 
         </div>
         <div class="row">
-            <div id=4 ng-click="ctrl.number(4)">4</div>
-            <div id=5 ng-click="ctrl.number(5)">5</div>
-            <div id=6 ng-click="ctrl.number(6)">6</div>
-            <div id='minus' ng-click='ctrl.minus()'>-</div>
+            <div id='four' ng-click="ctrl.number(4)">4</div>
+            <div id="five" ng-click="ctrl.number(5)">5</div>
+            <div id='six' ng-click="ctrl.number(6)">6</div>
+            <div id='subtract' ng-click='ctrl.minus()'>-</div>
         </div>
         <div class="row">
-            <div id=1 ng-click="ctrl.number(1)">1</div>
-            <div id=2 ng-click="ctrl.number(2)">2</div>
-            <div id=3 ng-click="ctrl.number(3)">3</div>
-            <div id='plus' ng-click="ctrl.plus()">+</div>
+            <div id='one' ng-click="ctrl.number(1)">1</div>
+            <div id='two' ng-click="ctrl.number(2)">2</div>
+            <div id='three' ng-click="ctrl.number(3)">3</div>
+            <div id='add' ng-click="ctrl.plus()">+</div>
         </div>
         <div class="row">
             <div id='zero' ng-click="ctrl.number(0)">0</div>
-            <div id='dot' ng-click=ctrl.dot()>.</div>
-            <div id='eq' ng-click="ctrl.equals()">=</div>
+            <div id='decimal' ng-click=ctrl.dot()>.</div>
+            <div id='equals' ng-click="ctrl.equals()">=</div>
         </div>
+
     </div>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
-
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     <script src="js/index.js"></script>
 
 </body>

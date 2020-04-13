@@ -1,3 +1,4 @@
+const projectName = "javascript-calculator";
 var app = angular.module('calc', []);
 app.controller('calcController', calcController);
 
@@ -39,7 +40,7 @@ function calcController($scope) {
             return prev;
 
         }, "");
-    })
+    });
 
     function addSign() {
         if (binaryOperationIsLast()) {
@@ -55,7 +56,8 @@ function calcController($scope) {
 
     function binaryOperationIsLast() {
         var xx = binOperators.find(x => x === getLastOperation());
-        return xx != undefined;
+        //console.log(xx)
+        return xx !== undefined;
     }
 
     function number(number) {
@@ -64,12 +66,12 @@ function calcController($scope) {
         if (controller.value === "0" || lastBtnIsOperator) {
             controller.value = num;
             controller.recentOperation.push(num);
-            console.log(controller.recentOperation)
+            console.log(controller.recentOperation);
         } else {
 
             controller.value = controller.value + num;
             updateLastNumber();
-            console.log(controller.recentOperation)
+            console.log(controller.recentOperation);
         }
 
     }
@@ -81,7 +83,7 @@ function calcController($scope) {
     }
 
     function equals() {
-        if (controller.recentOperation.length == 0) {
+        if (controller.recentOperation.length === 0) {
             return;
         }
 
@@ -92,11 +94,7 @@ function calcController($scope) {
                 parseFloat(controller.recentOperation[i + 1]);
             switch (controller.recentOperation[i]) {
                 case operations.division:
-                    {
-                        if (result === 0) {
-                            controller.value = "Cannot divide by zero";
-                            return;
-                        }
+                    {                        
                         result = result / secondParam;
                         break;
                     }
@@ -126,7 +124,7 @@ function calcController($scope) {
     }
 
     function dot() {
-        if (binaryOperationIsLast() || controller.value.endsWith('.')) {
+        if (binaryOperationIsLast() || controller.value.indexOf('.')!= -1) {
             return;
         }
         controller.value += '.';
@@ -167,7 +165,7 @@ function calcController($scope) {
     }
 
     function updateLastNumber() {
-        var index = controller.recentOperation.length == 0 ? 0 : controller.recentOperation.length - 1;
+        var index = controller.recentOperation.length === 0 ? 0 : controller.recentOperation.length - 1;
         controller.recentOperation[index] = controller.value;
     }
 }
