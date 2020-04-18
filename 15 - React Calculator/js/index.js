@@ -18,7 +18,7 @@ class NumBtn extends React.Component {
             this.props.click(this.props.value, this.props.state);
         }
         render() {
-            return ( < div className = 'button'
+            return ( < div className = 'button' id={this.props.id}
                 onClick = {
                     this.handleClick
                 } > {
@@ -26,21 +26,19 @@ class NumBtn extends React.Component {
                 } < /div>);
         }
     }
-    /*class OperationBtn extends React.Component {
-        
-        constructor(props){
-            super(props);
-            this.handleClick = this.handleClick.bind(this);
-        }
-        handleClick(){
-            this.props.click(this.props.value);
-        }
-        render(){
-            return(
-            <div className='button' onClick={this.handleClick}>{this.props.value}</div>
-            );
-        }
-    }*/
+    
+function parseToExpession(xS, yS, op){
+                let x= parseFloat(xS);
+                let y =parseFloat(yS);
+                switch(op){
+                    case '*': return x * y;
+                    case '/': return x / y;
+                    case '-': return x - y;
+                    case '+': return x + y;
+                }
+                
+            }                    
+                    
 function getRecentString(state) {
     if (state.numbers.length === 0) return '';
     return state.recent.join("");
@@ -48,7 +46,7 @@ function getRecentString(state) {
 
 function updateNumbers(numbers, value) {
     let current = numbers.pop();
-    var newValue = current === undefined ? value : current + value;
+    var newValue = current === undefined ? value :current + value;
     numbers.push(newValue);
 }
 const none = 'none';
@@ -78,6 +76,15 @@ function checkStateTransition(oldState, newState){
             return oldState === number || oldState === decimal; //zero 9000; 
     }
 }
+            function getOperationPriority(op){
+                switch(op){
+                    case '*' : return 1;
+                    case '/': return 1;
+                    case '-': return 0;
+                    case '+': return 0;
+                    default: throw new Error(`Operation ${op} is not supported`);
+                }
+            }
       
             function getClearState(){
                 return {
@@ -94,6 +101,58 @@ class Calculator extends React.Component {
         super(props);
         this.state = getClearState();
         this.update = this.update.bind(this);
+        this.evaluate = this.evaluate.bind(this);
+    }
+     evaluate(){
+         var operations = [ '/', '*','+','-'];
+      let j =0;
+       var postfixnotation = [];
+         var stack = [];
+         for(let i = 0; i< this.state.numbers.length;i+=2){
+             postfixnotation.push(this.state.numbers[i]);
+             if(this.state.numbers.length > i+1){
+                postfixnotation.push(this.state.numbers[i+1]);
+            }
+             //if(this.state.operations.length = j) continue;
+             
+             var currentOp = this.state.operations[j];
+             if(stack.length !== 0){
+                 var lastOpPriority = getOperationPriority(stack.last());
+                 var currentOpPriority = getOperationPriority(currentOp);
+                 if(lastOpPriority > currentOpPriority){
+                     postfixnotation.push(stack.pop());
+                     console.log('pfix priority ', postfixnotation);
+                     console.log(stack);
+                 }else{
+                     postfixnotation.push(currentOp);
+                 }
+             }
+             else {
+                 stack.push(currentOp);
+             }    
+             j++;
+         }
+            
+        postfixnotation = postfixnotation.concat(stack);
+     console.log('postfix ', postfixnotation);
+         var result = postfixnotation.reduce(function(acc, currentVal){
+            
+             if(operations.every(op=> op !== currentVal)){
+                 acc.push(currentVal);
+             }
+             else{
+              // var exprString = acc.pop() + currentVal + acc.pop();
+               var secondOperand = acc.pop();
+                 var firstOperand = acc.pop();
+                 var extracted1 = parseToExpession(firstOperand, secondOperand, currentVal);
+                 acc.push(extracted1);
+             }
+             return acc;
+         },[]);
+       
+            
+            
+            return result[result.length -1];
     }
     update(value, state) {
         console.log('update ', value );
@@ -127,8 +186,13 @@ class Calculator extends React.Component {
         
         if(state === equals){
             //implement evaluation
-             console.log('eval');   
-            newState.state = state;
+          var result = this.evaluate();
+         console.log('eval', this.state);
+         console.log('REsult ', result);
+         newState.state = state;
+         newState.numbers = [result];
+         newState.operations = [];
+
         }
         
        if(state === decimal){
@@ -149,6 +213,7 @@ class Calculator extends React.Component {
             }
             
             if(oldState === operation && value === subtract){
+               
                 newState.state = negativeSign;
             }
         }
@@ -157,6 +222,8 @@ class Calculator extends React.Component {
             
             if (oldState === decimal || oldState == number) {
                 updateNumbers(newState.numbers, value);
+            }else if(oldState === negativeSign){
+                newState.numbers.push(subtract + value);
             }
             else {
                 newState.numbers.push(value);
