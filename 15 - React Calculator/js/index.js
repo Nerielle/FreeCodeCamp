@@ -105,7 +105,43 @@ class Calculator extends React.Component {
     }
      evaluate(){
          var operations = [ '/', '*','+','-'];
-      let j =0;
+         
+//         this.state.numbers = [3,5,6,2,4];
+//         this.state.operations = ['+','*','-','/'];
+           
+//         this.state.numbers = [1,2,3];
+//         this.state.operations = ['+','*'];
+         
+         let input = [];
+         for(let i=0;i<this.state.numbers.length;i++){
+             input.push(this.state.numbers[i]) ;
+             if(this.state.operations.length <= i) continue;
+             input.push(this.state.operations[i]);
+         }
+         var postfixnotation = [];
+         var stack = [];
+         input.forEach((current, index) => {
+             if (index % 2 === 0) {
+                 postfixnotation.push(current);
+             }
+             else {
+                 if (stack.length !== 0) {
+                     var lastOpPriority = getOperationPriority(stack.last());
+                     var currentOpPriority = getOperationPriority(current);
+                     if (lastOpPriority >= currentOpPriority) {
+                         postfixnotation.push(stack.pop());                        
+                     }                 
+                 }
+                 stack.push(current);
+              
+                 console.log(stack);
+                 console.log('pfix priority ', postfixnotation);
+             }
+ });
+         
+     postfixnotation = postfixnotation.concat(stack.reverse());
+      /*
+         let j =0;
        var postfixnotation = [];
          var stack = [];
          for(let i = 0; i< this.state.numbers.length;i+=2){
@@ -134,6 +170,8 @@ class Calculator extends React.Component {
          }
             
         postfixnotation = postfixnotation.concat(stack);
+         
+         */
      console.log('postfix ', postfixnotation);
          var result = postfixnotation.reduce(function(acc, currentVal){
             
@@ -240,8 +278,8 @@ class Calculator extends React.Component {
         let current = this.state.recent.length === 0 ? 0 : this.state.numbers.last();
         console.log('curr', current);
         return ( < React.Fragment >
-                < div id = 'display' > < div > {  this.state.recent.join("") } < /div>
-            < div > {                current            } < /div>
+                < div > < div > {  this.state.recent.join("") } < /div>
+            < div  id = 'display'> {                current            } < /div>
             < /div> 
             < NumBtn id = 'clear'   value = { clear }  click = { this.update } state = {none} /> 
                 < NumBtn id = 'zero'   value = {zero} click = {   this.update }     state ={number}        /> 
