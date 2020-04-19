@@ -70,8 +70,6 @@ function checkStateTransition(oldState, newState){
             return oldState === number || oldState === decimal || oldState === operation || oldState === equals;
         case decimal: 
             return oldState === none || oldState === number;
-//        case zero: 
-//            return oldState === none || oldState === decimal || oldState === number;//zero??? 40004
         case equals: 
             return oldState === number || oldState === decimal; //zero 9000; 
     }
@@ -148,7 +146,6 @@ class Calculator extends React.Component {
                  acc.push(currentVal);
              }
              else{
-              // var exprString = acc.pop() + currentVal + acc.pop();
                var secondOperand = acc.pop();
                  var firstOperand = acc.pop();
                  var extracted1 = parseToExpession(firstOperand, secondOperand, currentVal);
@@ -193,8 +190,9 @@ class Calculator extends React.Component {
         
         
         if(state === equals){
+        // var previous = this.state.recent.
          var result = this.evaluate();
-         console.log('eval', this.state);
+         
          console.log('REsult ', result);
          newState.state = state;
          newState.numbers = [result];
@@ -216,16 +214,20 @@ class Calculator extends React.Component {
             if(oldState === number || oldState === decimal || oldState === equals){
                 newState.operations.push(value);
                     
-        newState.state = state;
+                newState.state = state;
             }
             if(oldState === equals){
-                newState.recent.push(newState.numbers.last());
+                newState.recent = [newState.numbers.last()];
             }
             
-            if(oldState === operation && value === subtract){
-               
+            if(oldState === operation && value === subtract){               
                 newState.state = negativeSign;
             }
+//            else
+//            {                
+//                newState.operations.push(value);                    
+//                newState.state = state;
+//            }
         }
         
         if(state === number)      { 
