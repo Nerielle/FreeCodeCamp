@@ -67,7 +67,7 @@ function checkStateTransition(oldState, newState){
         case negativeSign: 
             return oldState === none || oldState === operation;
         case operation:
-            return oldState === number || oldState === decimal || oldState === operation;
+            return oldState === number || oldState === decimal || oldState === operation || oldState === equals;
         case decimal: 
             return oldState === none || oldState === number;
 //        case zero: 
@@ -140,38 +140,7 @@ class Calculator extends React.Component {
  });
          
      postfixnotation = postfixnotation.concat(stack.reverse());
-      /*
-         let j =0;
-       var postfixnotation = [];
-         var stack = [];
-         for(let i = 0; i< this.state.numbers.length;i+=2){
-             postfixnotation.push(this.state.numbers[i]);
-             if(this.state.numbers.length > i+1){
-                postfixnotation.push(this.state.numbers[i+1]);
-            }
-             //if(this.state.operations.length = j) continue;
-             
-             var currentOp = this.state.operations[j];
-             if(stack.length !== 0){
-                 var lastOpPriority = getOperationPriority(stack.last());
-                 var currentOpPriority = getOperationPriority(currentOp);
-                 if(lastOpPriority > currentOpPriority){
-                     postfixnotation.push(stack.pop());
-                     console.log('pfix priority ', postfixnotation);
-                     console.log(stack);
-                 }else{
-                     postfixnotation.push(currentOp);
-                 }
-             }
-             else {
-                 stack.push(currentOp);
-             }    
-             j++;
-         }
-            
-        postfixnotation = postfixnotation.concat(stack);
-         
-         */
+      
      console.log('postfix ', postfixnotation);
          var result = postfixnotation.reduce(function(acc, currentVal){
             
@@ -192,6 +161,7 @@ class Calculator extends React.Component {
             
             return result[result.length -1];
     }
+    
     update(value, state) {
         console.log('update ', value );
         
@@ -223,8 +193,7 @@ class Calculator extends React.Component {
         
         
         if(state === equals){
-            //implement evaluation
-          var result = this.evaluate();
+         var result = this.evaluate();
          console.log('eval', this.state);
          console.log('REsult ', result);
          newState.state = state;
@@ -244,10 +213,13 @@ class Calculator extends React.Component {
        }
         
         if(state === operation){
-            if(oldState === number || oldState === decimal){
+            if(oldState === number || oldState === decimal || oldState === equals){
                 newState.operations.push(value);
                     
         newState.state = state;
+            }
+            if(oldState === equals){
+                newState.recent.push(newState.numbers.last());
             }
             
             if(oldState === operation && value === subtract){
