@@ -1,8 +1,18 @@
 const projectName = "javascript-calculator";
 const decimalSign = '.';
 const equalSign = '=';
-const clear = 'AC';
+const zero = '0';
 const subtract = '-';
+const divide = '/';
+const multiply = '*';
+const add = '+';
+const clear = 'AC';
+const none = 'none';
+const number = 'number';
+const operation = 'operation';
+const decimal = 'decimal';
+const equals = 'equal';
+
 if (!Array.prototype.last) {
     Array.prototype.last = function () {
         return this[this.length - 1];
@@ -31,10 +41,10 @@ function parseToExpession(xS, yS, op){
                 let x= parseFloat(xS);
                 let y =parseFloat(yS);
                 switch(op){
-                    case '*': return x * y;
-                    case '/': return x / y;
-                    case '-': return x - y;
-                    case '+': return x + y;
+                    case multiply: return x * y;
+                    case divide: return x / y;
+                    case subtract: return x - y;
+                    case add: return x + y;
                 }
                 
             }                    
@@ -49,51 +59,47 @@ function updateNumbers(numbers, value) {
     var newValue = current === undefined ? value :current + value;
     numbers.push(newValue);
 }
-const none = 'none';
-var number = 'number';
-var negativeSign = 'negativeSign';
-var operation = 'operation';
-var decimal = 'decimal';
-var zero = '0';
-var equals = 'equal';
+
             
             
-function checkStateTransition(oldState, newState){
-    switch(newState){
-        case none: return true;
-        case number: 
-            return oldState !== equals;
-        
-        case negativeSign: 
-            return oldState === none || oldState === operation;
-        case operation:
-            return oldState === number || oldState === decimal || oldState === operation || oldState === equals;
-        case decimal: 
-            return oldState === none || oldState === number;
-        case equals: 
-            return oldState === number || oldState === decimal; //zero 9000; 
+function checkStateTransition(oldState, newState) {
+    switch (newState) {
+    case none:
+        return true;
+    case number:
+        return true;
+    case operation:
+        return oldState === number || oldState === decimal || oldState === operation || oldState === equals;
+    case decimal:
+        return oldState === none || oldState === number;
+    case equals:
+        return oldState === number || oldState === decimal; //zero 9000; 
     }
 }
-            function getOperationPriority(op){
-                switch(op){
-                    case '*' : return 1;
-                    case '/': return 1;
-                    case '-': return 0;
-                    case '+': return 0;
-                    default: throw new Error(`Operation ${op} is not supported`);
-                }
-            }
-      
-            function getClearState(){
-                return {
-            operations: []
-            , numbers: []
-            , state: none
-            , recent: []
-        };
-            }
+function getOperationPriority(op) {
+    switch (op) {
+    case multiply:
+        return 1;
+    case divide:
+        return 1;
+    case subtract:
+        return 0;
+    case add:
+        return 0;
+    default:
+        throw new Error(`Operation ${op} is not supported`);
+    }
+}
+
+function getClearState() {
+    return {
+        operations: []
+        , numbers: []
+        , state: none
+        , recent: []
+    };
+}
             
-//const states = [none, number, negativeSign, operation];
 class Calculator extends React.Component {
     constructor(props) {
         super(props);
@@ -102,44 +108,63 @@ class Calculator extends React.Component {
         this.evaluate = this.evaluate.bind(this);
     }
      evaluate(){
-         var operations = [ '/', '*','+','-'];
-         
-//         this.state.numbers = [3,5,6,2,4];
-//         this.state.operations = ['+','*','-','/'];
-           
-//         this.state.numbers = [1,2,3];
-//         this.state.operations = ['+','*'];
-         
+         var operations = [ divide, multiply,add,subtract];
+      
          let input = [];
-         for(let i=0;i<this.state.numbers.length;i++){
-             input.push(this.state.numbers[i]) ;
-             if(this.state.operations.length <= i) continue;
-             input.push(this.state.operations[i]);
-         }
+         let number = '';
+         this.state.recent.reduce((operators, currentToken, index) => {
+             if(operations.some(op => op === currentToken)){
+                operators.push(currentToken);
+                 if(number !== '')
+                 {
+                     input.push([number, false]);
+                     number = '';
+                 }
+             }
+             else{
+                 if(operators.length!==0){
+                     if(operators.last() === subtract && operators.length > 1){
+                         input.push([operators[operators.length -2], true]);
+                         number+=subtract;
+                     }else
+                     {
+                         input.push([operators.last(), true]);
+                     
+                     }
+                     operators = [];
+                 }
+                 number+=currentToken;
+                 if(index === this.state.recent.length - 1 && number!== ''){
+                     input.push([number, false]);
+                 }
+             }
+             return operators;
+         },[]);
+         
+
+         console.log(input);
          var postfixnotation = [];
          var stack = [];
-         input.forEach((current, index) => {
-             if (index % 2 === 0) {
-                 postfixnotation.push(current);
+         input.forEach(current => {
+             if (current[1] === false) {
+                 postfixnotation.push(current[0]);
              }
              else {
                  if (stack.length !== 0) {
                      var lastOpPriority = getOperationPriority(stack.last());
-                     var currentOpPriority = getOperationPriority(current);
+                     var currentOpPriority = getOperationPriority(current[0]);
                      if (lastOpPriority >= currentOpPriority) {
                          postfixnotation.push(stack.pop());                        
                      }                 
                  }
-                 stack.push(current);
+                 stack.push(current[0]);
               
                  console.log(stack);
-                 console.log('pfix priority ', postfixnotation);
              }
  });
          
      postfixnotation = postfixnotation.concat(stack.reverse());
       
-     console.log('postfix ', postfixnotation);
          var result = postfixnotation.reduce(function(acc, currentVal){
             
              if(operations.every(op=> op !== currentVal)){
@@ -152,11 +177,9 @@ class Calculator extends React.Component {
                  acc.push(extracted1);
              }
              return acc;
-         },[]);
-       
+         },[]);     
             
-            
-            return result[result.length -1];
+        return result[result.length -1];
     }
     
     update(value, state) {
@@ -190,7 +213,6 @@ class Calculator extends React.Component {
         
         
         if(state === equals){
-        // var previous = this.state.recent.
          var result = this.evaluate();
          
          console.log('REsult ', result);
@@ -211,46 +233,34 @@ class Calculator extends React.Component {
        }
         
         if(state === operation){
-            if(oldState === number || oldState === decimal || oldState === equals){
-                newState.operations.push(value);
-                    
-                newState.state = state;
-            }
+
             if(oldState === equals){
-                newState.recent = [newState.numbers.last()];
+                newState.recent = [newState.numbers.last().toString()];
             }
             
-            if(oldState === operation && value === subtract){               
-                newState.state = negativeSign;
-            }
-//            else
-//            {                
-//                newState.operations.push(value);                    
-//                newState.state = state;
-//            }
+            newState.operations.push(value);                    
+            newState.state = state;
+            
         }
         
         if(state === number)      { 
-            
+            if(oldState === equals){
+                newState = getClearState();
+            }
             if (oldState === decimal || oldState == number) {
                 updateNumbers(newState.numbers, value);
-            }else if(oldState === negativeSign){
-                newState.numbers.push(subtract + value);
             }
             else {
                 newState.numbers.push(value);
             }
             newState.state = state;
         }
-        this.setState(newState);
-       if(oldState === operation && state == operation && value!=subtract){
-           return;
-       }
         newState.recent.push(value);      
+        this.setState(newState);       
     }
     render() {
         let current = this.state.recent.length === 0 ? 0 : this.state.numbers.last();
-        console.log('curr', current);
+       // console.log('curr', current);
         return ( < React.Fragment >
                 < div > < div > {  this.state.recent.join("") } < /div>
             < div  id = 'display'> {                current            } < /div>
@@ -266,10 +276,10 @@ class Calculator extends React.Component {
                 < NumBtn id = 'seven'  value = '7'     click = {   this.update  }     state ={number} /> 
                 < NumBtn id = 'eight'  value = '8' click = {  this.update   }    state ={number}/> 
                 < NumBtn id = 'nine'  value = '9'  click = { this.update }       state ={number}     /> 
-                < NumBtn id = 'add'   value = '+' click = {   this.update  } state = {operation }   />
+                < NumBtn id = 'add'   value = {add} click = {   this.update  } state = {operation }   />
                 < NumBtn id = 'subtract'   value = {  subtract   }  click = {   this.update   }   state = {operation  } /> 
-                < NumBtn id = 'multiply'  value = '*' click = { this.update  }    state = {operation  }            />
-                < NumBtn id = 'divide'   value = '/'   click = {  this.update   }   state = {operation  }            /> 
+                < NumBtn id = 'multiply'  value = {multiply} click = { this.update  }    state = {operation  }            />
+                < NumBtn id = 'divide'   value = {divide}   click = {  this.update   }   state = {operation  }            /> 
                 < NumBtn id = 'equals' value = {    equalSign    }    click = {  this.update }   state = { equals  }  />
                 < NumBtn id = 'decimal'  value = {    decimalSign   }   click = { this.update }  state = {decimal }            /> 
                     < /React.Fragment>);
