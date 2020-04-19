@@ -260,10 +260,10 @@ class Calculator extends React.Component {
     }
     render() {
         let current = this.state.recent.length === 0 ? 0 : this.state.numbers.last();
-       // console.log('curr', current);
         return ( < React.Fragment >
-                < div > < div > {  this.state.recent.join("") } < /div>
-            < div  id = 'display'> {                current            } < /div>
+            < div id='screen'>
+                < div id='recent'> {  this.state.recent.join("") } < /div>
+                < div  id = 'display'> {                current            } < /div>
             < /div> 
             < NumBtn id = 'clear'   value = { clear }  click = { this.update } state = {none} /> 
                 < NumBtn id = 'zero'   value = {zero} click = {   this.update }     state ={number}        /> 

@@ -1,6 +1,7 @@
 body{
-   
+    font-size: 1.3rem;
     height: 100vh;
+    
 }
 #container{ display: flex;
     align-content: center;
@@ -14,10 +15,20 @@ body{
     border: 1px solid black;
     width: 3rem;
     height: 3rem;
+    line-height: 3rem;
+      text-align: center;
+    vertical-align: middle;
+  
 }
-#display{
+#screen{
     color: white;
     background: black;
     width: 10rem;
     height: 4rem;
+    line-height: 1.5rem;
+    text-align: right;
+    padding: 0.5rem;
+}
+#recent{
+    font-size: 1rem;
 }
