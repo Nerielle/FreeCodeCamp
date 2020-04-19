@@ -260,29 +260,31 @@ class Calculator extends React.Component {
     }
     render() {
         let current = this.state.recent.length === 0 ? 0 : this.state.numbers.last();
-        return ( < React.Fragment >
+        return ( < div id='calc'>
             < div id='screen'>
                 < div id='recent'> {  this.state.recent.join("") } < /div>
                 < div  id = 'display'> {                current            } < /div>
             < /div> 
             < NumBtn id = 'clear'   value = { clear }  click = { this.update } state = {none} /> 
-                < NumBtn id = 'zero'   value = {zero} click = {   this.update }     state ={number}        /> 
+                 < NumBtn id = 'add'   value = {add} click = {   this.update  } state = {operation }   />
+                < NumBtn id = 'subtract'   value = {  subtract   }  click = {   this.update   }   state = {operation  } />
                 < NumBtn id = 'one'    value = '1'  click = {   this.update }  state ={number}      /> 
                 < NumBtn id = 'two'  value = '2'   click = {  this.update   }       state ={number}    /> 
                 < NumBtn id = 'three' value = '3'  click = {  this.update }   state ={number}  /> 
+                 < NumBtn id = 'multiply'  value = {multiply} click = { this.update  }    state = {operation  }            />
                 < NumBtn id = 'four'  value = '4' click = {   this.update   }    state ={number}   /> 
                 < NumBtn id = 'five' value = '5'    click = {    this.update }  state ={number}   />
                 < NumBtn id = 'six' value = '6'    click = {        this.update   } state ={number}   /> 
+                < NumBtn id = 'divide'   value = {divide}   click = {  this.update   }   state = {operation  }            /> 
+
                 < NumBtn id = 'seven'  value = '7'     click = {   this.update  }     state ={number} /> 
                 < NumBtn id = 'eight'  value = '8' click = {  this.update   }    state ={number}/> 
                 < NumBtn id = 'nine'  value = '9'  click = { this.update }       state ={number}     /> 
-                < NumBtn id = 'add'   value = {add} click = {   this.update  } state = {operation }   />
-                < NumBtn id = 'subtract'   value = {  subtract   }  click = {   this.update   }   state = {operation  } /> 
-                < NumBtn id = 'multiply'  value = {multiply} click = { this.update  }    state = {operation  }            />
-                < NumBtn id = 'divide'   value = {divide}   click = {  this.update   }   state = {operation  }            /> 
-                < NumBtn id = 'equals' value = {    equalSign    }    click = {  this.update }   state = { equals  }  />
                 < NumBtn id = 'decimal'  value = {    decimalSign   }   click = { this.update }  state = {decimal }            /> 
-                    < /React.Fragment>);
+                < NumBtn id = 'zero'   value = {zero} click = {   this.update }     state ={number}        />               
+                < NumBtn id = 'equals' value = {    equalSign    }    click = {  this.update }   state = { equals  }  />
+               
+                    < /div>);
     }
 }
 var container = document.getElementById('container');
