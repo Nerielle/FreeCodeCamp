@@ -85,3 +85,12 @@ Simple React app from Freecodecamp Challenge - https://codepen.io/nerielle/pen/B
 <li>Sass</li>
 </ul>
 Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/full/xxwbzJB - here it is in action
+
+<h3>Simple React Calculator</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>React</li>
+<li>Sass</li>
+</ul>
+Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/pen/yLYaMBX - here it is in action.
+Calculator considers 'minus' sign as negative sign if it goes after another binary operation. Calculator considers only last operation if there were several operators entered consecutively. Calculator uses <b>Reverse Polish Notation</b>.
