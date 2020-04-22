@@ -6,23 +6,35 @@ const sessionInterval = 'Session';
 class PomodoroClockCmp extends React.Component{
     constructor(props){
        super(props); 
-          this.state = {
-              breakLength: 1,
-              sessionLength: 1,
-           timer: 60,
-              interval: sessionInterval,
-              intervalId: 0
-              
-       };
+          this.state = this.getInitialState();
         
         this.onBreakLengthChange = this.onBreakLengthChange.bind(this);
         this.onSessionLengthChange = this.onSessionLengthChange.bind(this);
         this.onTimerStart = this.onTimerStart.bind(this);
         this.onTimerStop = this.onTimerStop.bind(this);
+        this.onResetTimer = this.onResetTimer.bind(this);
         this.timer = this.timer.bind(this);
+        this.getInitialState = this.getInitialState.bind(this);
+        
+    }
+    getInitialState(){
+        let session = 25;
+       return {
+              breakLength: 5,
+              sessionLength: session,
+              timer: session * 60,
+              interval: sessionInterval,
+              intervalId: 0
+              
+       };
     }
             
-    
+    onResetTimer(){
+        if(this.state.intervalId !== 0){
+            this.onTimerStop();
+        }
+        this.setState(this.getInitialState());
+    }
     onTimerStart(){   
         if (this.state.intervalId !== 0) {
             this.onTimerStop();
@@ -65,7 +77,7 @@ class PomodoroClockCmp extends React.Component{
 //        let newState = this.state;
 //        newState.sessionLength =value;
 //        this.setState(newState);
-          this.setState({sessionLength: value});
+          this.setState({sessionLength: value, timer: value * 60});
     }
     
     render(){
@@ -75,7 +87,9 @@ class PomodoroClockCmp extends React.Component{
         <SettingCmp id='break' value={this.state.breakLength}  handleInput={this.onBreakLengthChange}/>
         <label id='session-label'>Session Length</label>
         <SettingCmp id='session' value={this.state.sessionLength} handleInput={this.onSessionLengthChange}/>
-        <TimerCmp interval={this.state.interval} timer={this.state.timer} onStart = {this.onTimerStart} isRunning={this.state.intervalId !== 0}/>
+        <TimerCmp interval={this.state.interval} timer={this.state.timer} onStart = {this.onTimerStart}
+            onReset = {this.onResetTimer}
+            isRunning={this.state.intervalId !== 0}/>
         </React.Fragment>
         );
 
@@ -102,9 +116,9 @@ class SettingCmp extends React.Component{
     render(){
         return (
             <React.Fragment>
-        <button id={this.props.id + 'decrement'} onClick={this.decrement} disabled={this.props.value === 1}>Dec</button>
+        <button id={this.props.id + '-decrement'} onClick={this.decrement} disabled={this.props.value === 1}>Dec</button>
         <input type='text' id={this.props.id + '-length'} value={this.props.value} onChange={this.handle}/>
-        <button id={this.props.id + 'increment'}  onClick={this.increment}>Inc</button>
+        <button id={this.props.id + '-increment'}  onClick={this.increment} disabled={this.props.value === 59}>Inc</button>
            </React.Fragment>
         );
     }
@@ -124,7 +138,7 @@ class TimerCmp extends React.Component{
             <div id='timer-label'>{this.props.interval}</div>
             <div id='time-left'>{secondsToHms(this.props.timer)}</div>
    <button id='start_stop' onClick = {this.props.onStart}>{this.props.isRunning ? 'Stop':'Start'}</button>
-   <button id='reset'>Reset </button>
+   <button id='reset' onClick={this.props.onReset}>Reset </button>
                </React.Fragment>
         );
     }
