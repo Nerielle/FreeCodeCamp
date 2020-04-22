@@ -1,17 +1,56 @@
 const projectName = 'pomodoro-clock';
 const intervals=['session', 'break'];
+const breakInterval = 'Break';
+const sessionInterval = 'Session';
+
 class PomodoroClockCmp extends React.Component{
     constructor(props){
        super(props); 
           this.state = {
               breakLength: 1,
               sessionLength: 1,
-           timer: 1
+           timer: 60,
+              interval: sessionInterval,
+              intervalId: 0
               
        };
         
         this.onBreakLengthChange = this.onBreakLengthChange.bind(this);
         this.onSessionLengthChange = this.onSessionLengthChange.bind(this);
+        this.onTimerStart = this.onTimerStart.bind(this);
+        this.onTimerStop = this.onTimerStop.bind(this);
+        this.timer = this.timer.bind(this);
+    }
+            
+    
+    onTimerStart(){   
+        if (this.state.intervalId !== 0) {
+            this.onTimerStop();
+            return;
+       }        
+        var intervalId = setInterval(this.timer,1000);
+        this.setState({intervalId: intervalId});
+    }
+    
+    onTimerStop(){
+ 
+            clearInterval(this.state.intervalId);
+            this.setState({intervalId: 0})
+        
+    }
+    
+    timer (){
+         if(this.state.timer === 0 && this.state.interval === sessionInterval){
+            this.setState({timer: this.state.breakLength * 60, interval: breakInterval});
+            
+         }  
+         else if(this.state.timer === 0 && this.state.interval === breakInterval){
+            this.setState({timer: this.state.sessionLength * 60, interval: sessionInterval});
+             
+         }   
+         else{
+             this.setState({timer: this.state.timer - 1});
+         }
     }
     
     onBreakLengthChange(value){
@@ -36,7 +75,7 @@ class PomodoroClockCmp extends React.Component{
         <SettingCmp id='break' value={this.state.breakLength}  handleInput={this.onBreakLengthChange}/>
         <label id='session-label'>Session Length</label>
         <SettingCmp id='session' value={this.state.sessionLength} handleInput={this.onSessionLengthChange}/>
-        <TimerCmp interval={this.state.interval} timer={this.state.timer}/>
+        <TimerCmp interval={this.state.interval} timer={this.state.timer} onStart = {this.onTimerStart} isRunning={this.state.intervalId !== 0}/>
         </React.Fragment>
         );
 
@@ -73,19 +112,35 @@ class SettingCmp extends React.Component{
 class TimerCmp extends React.Component{
     constructor(props){
        super(props); 
-     
+        this.state = {
+            timer: secondsToHms(this.props.timer * 60)
+        };
+      //this.getInterval = this.getInterval.bind(this);
     }
+
     render(){
         return (
                     <React.Fragment>
             <div id='timer-label'>{this.props.interval}</div>
-            <div id='time-left'>{this.props.timer}</div>
-   <button id='start_stop'>Start</button>
+            <div id='time-left'>{secondsToHms(this.props.timer)}</div>
+   <button id='start_stop' onClick = {this.props.onStart}>{this.props.isRunning ? 'Stop':'Start'}</button>
    <button id='reset'>Reset </button>
                </React.Fragment>
         );
     }
 }
+
+ function secondsToHms(seconds) {
+
+        var h = Math.floor(seconds / 3600);
+        var m = Math.floor(seconds % 3600 / 60);
+        var s = Math.floor(seconds % 3600 % 60);
+        var r = h > 0 ? h + ':' : '' +
+            (m < 10 ? '0' : '') + m +
+            ':' + (s < 10 ? '0' : '') + s;
+
+        return r;
+    }
 var container = document.getElementById('container');
 ReactDOM.render(<PomodoroClockCmp />, container);
 //class ButtonCmp extends React.Component{
