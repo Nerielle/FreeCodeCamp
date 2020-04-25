@@ -87,9 +87,7 @@ class PomodoroClockCmp extends React.Component{
     render(){
         return(
         <React.Fragment>
-        <label id='break-label'>Break Length</label>
         <SettingCmp id='break' value={this.state.breakLength}  handleInput={this.onBreakLengthChange}/>
-        <label id='session-label'>Session Length</label>
         <SettingCmp id='session' value={this.state.sessionLength} handleInput={this.onSessionLengthChange}/>
         <TimerCmp interval={this.state.interval} timer={this.state.timer} onStart = {this.onTimerStart}
             onReset = {this.onResetTimer}
@@ -120,11 +118,12 @@ class SettingCmp extends React.Component{
     }
     render(){
         return (
-            <React.Fragment>
-        <button id={this.props.id + '-decrement'} onClick={this.decrement} disabled={this.props.value === 1}>Dec</button>
+            <div className = { this.props.id }>
+            <label id={this.props.id + '-label'}>{this.props.id} length</label>
+        <i className="fas fa-angle-down" id={this.props.id + '-decrement'} onClick={this.decrement} disabled={this.props.value === 1}></i>
         <input type='text' id={this.props.id + '-length'} value={this.props.value} onChange={this.handle}/>
-        <button id={this.props.id + '-increment'}  onClick={this.increment} disabled={this.props.value === 60}>Inc</button>
-           </React.Fragment>
+         <i className="fas fa-angle-up" id={this.props.id + '-increment'}  onClick={this.increment} disabled={this.props.value === 60}></i>
+           </div>
         );
     }
 }
@@ -136,12 +135,14 @@ class TimerCmp extends React.Component{
 
     render(){
         return (
-                    <React.Fragment>
+            <div className='timer'>
             <div id='timer-label'>{this.props.interval}</div>
             <div id='time-left'>{secondsToHms(this.props.timer)}</div>
-   <button id='start_stop' onClick = {this.props.onStart}>{this.props.isRunning ? 'Stop':'Start'}</button>
-   <button id='reset' onClick={this.props.onReset}>Reset </button>
-               </React.Fragment>
+            <div className='buttons'>
+               <button id='start_stop' onClick = {this.props.onStart}>{this.props.isRunning ? 'Stop':'Start'}</button>
+               <button id='reset' onClick={this.props.onReset}>Reset </button>
+            </div>
+            </div>
         );
     }
 }
