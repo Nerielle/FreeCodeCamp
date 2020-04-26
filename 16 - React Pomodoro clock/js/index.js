@@ -38,7 +38,6 @@ class PomodoroClockCmp extends React.Component{
         this.audio.pause();
     }
     onTimerStart() {
-        console.log('start ', this.state);
         if (this.state.intervalId !== 0) {
             this.onTimerStop();
             return;
@@ -64,20 +63,16 @@ class PomodoroClockCmp extends React.Component{
               this.beep();
           }
          if(this.state.timer === 0 && this.state.interval === sessionInterval){
-             console.log('session fin')
             this.setState({timer: this.state.breakLength * 60, interval: breakInterval});
             
          }  
          else if(this.state.timer === 0 && this.state.interval === breakInterval){
-             console.log('break fin')
             this.setState({timer: this.state.sessionLength * 60, interval: sessionInterval});
              
          }   
          else{
-             console.log('else')
              this.setState({timer: this.state.timer - 1});
          }
-         if(this.state.timer < 0)console.log('negative ')
     }
     
     onBreakLengthChange(value){
@@ -123,14 +118,14 @@ class SettingCmp extends React.Component{
     }
     render(){
         return (
-            <div className = { this.props.id }>
+         <div className = { this.props.id }>
             <label id={this.props.id + '-label'}>{this.props.id + ' length'} </label>
             <div className='setting'>
-                <i className="fas fa-angle-down" id={this.props.id + '-decrement'} onClick={this.decrement} disabled={this.props.value === 1}></i>
+                <button id={this.props.id + '-decrement'} onClick={this.decrement} disabled={this.props.value === 1}><i className="fas fa-angle-down"></i></button>
                 <input type='text' id={this.props.id + '-length'} value={this.props.value} onChange={this.handle}/>
-                 <i className="fas fa-angle-up" id={this.props.id + '-increment'}  onClick={this.increment} disabled={this.props.value === 60}></i>
+                <button id={this.props.id + '-increment'}  onClick={this.increment} disabled={this.props.value === 60}><i className="fas fa-angle-up"></i></button>
             </div>
-           </div>
+        </div>
         );
     }
 }
@@ -142,13 +137,13 @@ class TimerCmp extends React.Component{
 
     render(){
         return (
-            <div className='timer'>
+                     <div className='timer'>
             <div id='timer-label'>{this.props.interval}</div>
             <div id='time-left'>{secondsToHms(this.props.timer)}</div>
-            <div className='buttons'>
-               <button id='start_stop' onClick = {this.props.onStart}>{this.props.isRunning ? 'Stop':'Start'}</button>
-               <button id='reset' onClick={this.props.onReset}>Reset </button>
-            </div>
+                <div className='buttons'>
+                   <button id='start_stop' onClick = {this.props.onStart}>{this.props.isRunning ? 'Stop':'Start'}</button>
+                   <button id='reset' onClick={this.props.onReset}>Reset </button>
+                </div>
             </div>
         );
     }

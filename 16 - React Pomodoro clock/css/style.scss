@@ -39,6 +39,10 @@ body {
     & > * {
         margin: 0 4px;
     }
+    & button{
+        border: none;
+        background: white;
+    }
 }
 .timer {
     background: #D46A6A;
