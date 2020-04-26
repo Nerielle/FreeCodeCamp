@@ -1,5 +1,7 @@
 # FreeCodeCamp
 Web works accordingly to FreeCodeCamp's tasks.
+Sounds are provided by  <a href="https://sampleswap.org" target="_blank">
+    
 <h3>1 - Tribute - simple web-page</h3>
 Introduction to Html5. Plain css project - https://codepen.io/nerielle/pen/xVjPaQ
 
@@ -94,3 +96,12 @@ Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/full/x
 </ul>
 Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/pen/yLYaMBX - here it is in action.
 Calculator considers 'minus' sign as negative sign if it goes after another binary operation. Calculator considers only last operation if there were several operators entered consecutively. Calculator uses <b>Reverse Polish Notation</b>.
+
+<h3>React Pomodoro Clock</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>React</li>
+<li>Sass</li>
+<li>FontAwesome</li>
+</ul>
+Pomodoro clock in action here <a href='https://codepen.io/nerielle/full/yLYMrey'>https://codepen.io/nerielle/full/yLYMrey</a>.
