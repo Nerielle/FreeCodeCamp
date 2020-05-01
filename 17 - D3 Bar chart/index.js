@@ -15,16 +15,16 @@
   var maxDataValue = d3.max(dataset, d=> d[1]);
 
     const xScale = d3.scaleLinear()
-                     .domain([0, dataset.length*30])
-                     .range([0, width - padding]);
+                     .domain([0, dataset.length*10])
+                     .range([0, width - padding*2]);
 
     const linearScale = d3.scaleLinear()
      .domain([0,d3.max(dataset, (d) => d[1])])
-                     .range([0 , height - padding]);
+                     .range([0 , height - padding*2]);
 
     const yScale = d3.scaleLinear()
                      .domain([0, d3.max(dataset, (d) => d[1])])
-                     .range([height - padding , 0]);
+                     .range([height - padding*2 , 0]);
 
     const svg = d3.select("body")
                   .append("svg")
@@ -35,19 +35,20 @@
        .data(dataset)
        .enter()
        .append("rect")
-       .attr("x", (d,i) =>  i*30 + padding )
-       .attr("y",(d) => height - linearScale(d[1]) - padding)
-       .attr('width', '25')
-       .attr('height', (d,i)=> linearScale(d[1]));
-       //.attr("rx",'5');
+       .attr("x", (d,i) =>  i*10 + padding )
+       .attr("y",(d) => height - linearScale(d[1]  )-padding)
+       .attr('width', '8')
+       .attr('height', (d,i)=> linearScale(d[1]))
+       .attr('fill', '#00D6D6')
+       .attr("rx",'2');
 
     svg.selectAll("text")
        .data(dataset)
        .enter()
        .append("text")
        .text((d) =>  (d[0] + "," + linearScale(d[1])))
-       .attr("x", (d,i) => i * 30 + padding)
-       .attr("y", (d) => linearScale(d[1]) - 5)
+       .attr("x", (d,i) => i * 10 + padding)
+       .attr("y", (d) => height - linearScale(d[1]) - 5)
 
     const xAxis = d3.axisBottom(xScale);
     // Add your code below this line
@@ -56,13 +57,13 @@
 
     svg.append("g")
        .attr("transform",'translate('+padding+','+ (height - padding)  +")")
-.style('fill','red')
+//.style('fill','red')
        .call(xAxis);
 
     // Add your code below this line
     svg.append('g')
-    .attr('transform', 'translate('+padding +' , 0)')
-    .style('fill','red')
+    .attr('transform', 'translate('+padding +' ,'+padding+')')
+    //.style('fill','red')
     .call(yAxis);
    
 
