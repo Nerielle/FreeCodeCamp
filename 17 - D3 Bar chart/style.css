@@ -1,0 +1,20 @@
+svg{
+    border: 3px solid blue;
+}
+body{
+    height: 100vh;
+    display: flex;
+
+    align-content: space-around;
+    align-items: center;
+
+    justify-content:center;
+    flex-direction: column;
+}
+section{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  height: 700;
+    width: 900;
+}
