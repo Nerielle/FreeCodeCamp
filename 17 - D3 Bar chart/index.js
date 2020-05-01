@@ -48,22 +48,17 @@
        .append("text")
        .text((d) =>  (d[0] + "," + linearScale(d[1])))
        .attr("x", (d,i) => i * 10 + padding)
-       .attr("y", (d) => height - linearScale(d[1]) - 5)
+       .attr("y", (d) => height - linearScale(d[1]) - padding)
 
     const xAxis = d3.axisBottom(xScale);
-    // Add your code below this line
     const yAxis = d3.axisLeft(yScale);
-    // Add your code above this line
 
     svg.append("g")
        .attr("transform",'translate('+padding+','+ (height - padding)  +")")
-//.style('fill','red')
        .call(xAxis);
 
-    // Add your code below this line
     svg.append('g')
     .attr('transform', 'translate('+padding +' ,'+padding+')')
-    //.style('fill','red')
     .call(yAxis);
    
 
