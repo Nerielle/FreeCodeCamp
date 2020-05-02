@@ -1,17 +1,22 @@
 
-/*fetch('https://api.covid19api.com/summary')
+fetch('https://api.covid19api.com/summary')
   .then(response => {
     return response.json();
   })
   .then((data) => {
-    console.log(data);*/
-    let c = document.getElementById('c');
+  
+    //let c = document.getElementById('c');
   //c.textContent = JSON.stringify(data);
-  let dataset = [['UK',600],['R', 100],['Jggfh',200]];//data.Countries.map(c => [c.Country, c.TotalConfirmed]);
-  //c.textContent = JSON.stringify(dataset);
+  let dataset =data.Countries.map(c => [c.Country, c.TotalConfirmed])
+  .filter(c =>{
+      console.log(c[0]);
+     var res= ['Korea (South)','Belarus','Australia','China','Canada','France','Denmark','New Zealand','Russian Federation','United States of America','United Kingdom','Kazakhstan','India','Germany'].includes(c[0]);
+    return res;
+  });
+  console.log(dataset);
   let padding = 30;
-  let height = 300;
-  let width=300;
+  let height =600;
+  let width=800;
   var maxDataValue = d3.max(dataset, d=> d[1]);
 
     const xScale = d3.scaleLinear()
@@ -46,7 +51,7 @@
        .data(dataset)
        .enter()
        .append("text")
-       .text((d) =>  (d[0] + "," + linearScale(d[1])))
+       .text((d) =>  (d[0]))
        .attr("x", (d,i) => i * 10 + padding)
        .attr("y", (d) => height - linearScale(d[1]) - padding)
 
@@ -63,5 +68,5 @@
    
 
 
- // });
+  });
  
