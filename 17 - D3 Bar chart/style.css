@@ -1,7 +1,19 @@
-svg{
+.graph{
     border: 3px solid blue;
+    padding: 30px;
+    fill: #CD008A;
 }
-body{
+.left-bottom-margin{
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+#x-axis, #y-axis{
+    fill:black;
+}
+.bar:hover{
+    fill:#E7009B;
+}
+/*body{
     height: 100vh;
     display: flex;
 
@@ -17,4 +29,4 @@ section{
     justify-content: center;
   height: 700;
     width: 900;
-}
+}*/
