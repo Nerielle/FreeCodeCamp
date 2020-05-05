@@ -39,7 +39,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
                 .domain([minDate, maxDate])
                 .range([0, innerWidth]);
   let yScale = d3.scaleLinear()
-                .domain([d3.min(dataset, d => d[1]), d3.max(dataset, d => d[1])])
+                .domain([0, d3.max(dataset, d => d[1])])
                 .range([innerHeight, 0]);
     let xAxis = d3.axisBottom(xScale);
     let yAxis = d3.axisLeft(yScale);
@@ -72,7 +72,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
         .attr('class', 'bar')
         .attr('data-date', d=>d[0])
         .attr('data-gdp', d=>d[1])
-        .attr('x', (d, i)=> i * barWidth)
+        .attr('x', (d, i)=> xScale(new Date(d[0])))
         .attr('y', (d, i)=> yScale(d[1]))
         .attr('width', barWidth)
         .attr('height', d=> innerHeight - yScale(d[1]))
