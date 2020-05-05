@@ -1,6 +1,6 @@
 .graph{
     border: 3px solid blue;
-    padding: 30px;
+    //padding: 30px;
     fill: #CD008A;
 }
 .left-bottom-margin{
@@ -8,7 +8,8 @@
     margin-bottom: 30px;
 }
 #x-axis, #y-axis{
-    fill:black;
+    
+   
 }
 .bar:hover{
     fill:#E7009B;

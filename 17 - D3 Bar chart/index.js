@@ -8,15 +8,33 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
   
   let dataset = data.data;
   console.log(dataset);
+    
+/*     var years = dataset.reduce(((years, subArray)=>{
+      let year = new Date(subArray[0]).getFullYear();
+     
+      if(years.includes(year)){
+          return years;
+      }
+      else{
+          years.push(year);
+          return years;
+      }
+      
+  }),[]);
+  console.log(years);*/
+    
+  let leftPadding = 50;
+  let topPadding = 20;
+  //let bottomPadding = 50px;
   let padding = 30;
   let height =600;
   let width=800;
-    let innerHeight = height - padding;
-    let innerWidth = width - padding;
+    let innerHeight = height - padding - topPadding;
+    let innerWidth = width - padding - leftPadding;
     
-  let minDate = data.from_date;
-  let maxDate = data.to_date;
-    
+  let minDate = new Date(data.from_date);
+  let maxDate = new Date(data.to_date);
+    console.log(minDate, maxDate)
   let xScale = d3.scaleTime()
                 .domain([minDate, maxDate])
                 .range([0, innerWidth]);
@@ -31,22 +49,29 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
             .attr('class', 'graph')
             .attr("width", width)
             .attr("height", height);
-    svg.append('g')
+ var group =   svg.append('g')
+        .attr('transform', 'translate(' + leftPadding + ', '+topPadding+')');
+    group.append('g')
         .attr('id','x-axis')
+        .attr('stroke-width', '1')
         //.attr('class', 'left-bottom-margin')
-        .attr('transform', 'translate(0,'+innerHeight+')')
+        .attr('transform', 'translate('+0+','+(innerHeight )+')')
         .call(xAxis);
-    svg.append('g')
+    group.append('g')
+        .attr('stroke-width', '1')
         .attr('id','y-axis')
+        .attr('transform', 'translate('+0+','+0+')')
         //.attr('class', 'left-bottom-margin')
         .call(yAxis);
     
     var barWidth = innerWidth/dataset.length;
-    svg.selectAll('rect')
+    group.selectAll('rect')
         .data(dataset)
         .enter()
         .append('rect')
         .attr('class', 'bar')
+        .attr('data-date', d=>d[0])
+        .attr('data-gdp', d=>d[1])
         .attr('x', (d, i)=> i * barWidth)
         .attr('y', (d, i)=> yScale(d[1]))
         .attr('width', barWidth)
