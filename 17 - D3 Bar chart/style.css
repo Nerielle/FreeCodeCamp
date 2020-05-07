@@ -1,19 +1,39 @@
-.graph{
+section {}
+
+.graph {
     border: 3px solid blue;
-    //padding: 30px;
     fill: #CD008A;
+ /*   pointer-events: all;*/
 }
-.left-bottom-margin{
+
+.left-bottom-margin {
     margin-left: 30px;
     margin-bottom: 30px;
 }
-#x-axis, #y-axis{
-    
-   
+
+/*#group {
+    pointer-events: all;
+}*/
+
+#x-axis,
+#y-axis {}
+
+.bar:hover {
+    fill: #E7009B;
+   /* pointer-events: all;*/
 }
-.bar:hover{
-    fill:#E7009B;
+
+#tooltip {
+    border: 1px solid black;
+    background: antiquewhite;
+    color: black;
+    text-align: center;
+    border-radius: 5px;
+    width: 100px;
+    height: 50px;
 }
+
+
 /*body{
     height: 100vh;
     display: flex;
