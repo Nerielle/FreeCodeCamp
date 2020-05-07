@@ -1,9 +1,10 @@
-section {}
+
 
 .graph {
-    border: 3px solid blue;
+    border: 1px solid #7D3A67;
+    box-shadow: 7px 7px 2px 1px #7D3A67;
     fill: #CD008A;
- /*   pointer-events: all;*/
+    pointer-events: all;
 }
 
 .left-bottom-margin {
@@ -11,16 +12,16 @@ section {}
     margin-bottom: 30px;
 }
 
-/*#group {
+#group {
     pointer-events: all;
-}*/
+}
 
 #x-axis,
 #y-axis {}
 
 .bar:hover {
     fill: #E7009B;
-   /* pointer-events: all;*/
+    pointer-events: all;
 }
 
 #tooltip {
@@ -34,7 +35,7 @@ section {}
 }
 
 
-/*body{
+body{
     height: 100vh;
     display: flex;
 
@@ -50,4 +51,4 @@ section{
     justify-content: center;
   height: 700;
     width: 900;
-}*/
+}

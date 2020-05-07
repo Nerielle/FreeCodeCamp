@@ -7,8 +7,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
 
   
   let dataset = data.data;
-  //console.log(dataset);
-    
+
 /*     var years = dataset.reduce(((years, subArray)=>{
       let year = new Date(subArray[0]).getFullYear();
      
@@ -23,20 +22,23 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
   }),[]);
   console.log(years);*/
   
-    function mouseOverHandler(d){
-        conslole.log('mouseover');
-  console.log(this, d, i);
-
-  
-    let tooltip = d3.select('#tooltip');
-        tooltip.html(new Date(d[0]).toLocaleDateString() + '<br/> ' + d[1]);
-      tooltip.style('opacity', '1')
-        .style('left', (i*barWidth +leftPadding) + 'px');
-        
-     
+function mouseOverHandler(d,i){     
+            //console.log('over');
+            d3.select('#tooltip').style('opacity', '1')
+                .style('left', (i * barWidth + leftPadding) + 'px')
+                .style('top', d3.event.pageY + 'px')
+                .attr('data-date', d[0])
+                .html(new Date(d[0]).toLocaleDateString() + '<br/> ' + d[1]);}
     
-}  
-  
+function mouseOutEventHandler(d){
+           // console.log('out');
+            d3.select('#tooltip').transition()
+                .duration(200)
+                .style('opacity', 0);}
+    
+ function mouseMovingHandler (d,i) {
+        //console.log('move');
+    tooltip.style("top", d3.event.pageY+"px").style("left",(i * barWidth + leftPadding) + 'px');}
     
   let leftPadding = 50;
   let topPadding = 20;
@@ -78,14 +80,12 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
     group.append('g')
         .attr('id','x-axis')
         .attr('stroke-width', '1')
-        //.attr('class', 'left-bottom-margin')
         .attr('transform', 'translate('+0+','+(innerHeight )+')')
         .call(xAxis);
     group.append('g')
         .attr('stroke-width', '1')
         .attr('id','y-axis')
         .attr('transform', 'translate('+0+','+0+')')
-        //.attr('class', 'left-bottom-margin')
         .call(yAxis);
     
     var barWidth = innerWidth/dataset.length;
@@ -101,14 +101,7 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
         .attr('width', barWidth)
         .attr('height', d=> innerHeight - yScale(d[1]))
         .attr("rx",'2')
-        .on('mouseover', function mouseOverHandler(d,i){     
-            let tooltip = d3.select('#tooltip');
-            tooltip.html(new Date(d[0]).toLocaleDateString() + '<br/> ' + d[1]);
-            tooltip.style('opacity', '1')
-                .style('left', (i * barWidth + leftPadding) + 'px')
-               .style('top', d3.event.pageY + 'px');})
-        .on('mouseout',   function mouseOutEventHandler(d){
-            d3.select('#tooltip').transition()
-                .duration(200)
-                .style('opacity', 0);});
+        .on('mouseover', mouseOverHandler)
+        .on('mouseout',  mouseOutEventHandler )
+        .on('mousemove', mouseMovingHandler);
 })
