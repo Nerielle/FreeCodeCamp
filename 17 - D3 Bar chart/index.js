@@ -8,19 +8,6 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
   
   let dataset = data.data;
 
-/*     var years = dataset.reduce(((years, subArray)=>{
-      let year = new Date(subArray[0]).getFullYear();
-     
-      if(years.includes(year)){
-          return years;
-      }
-      else{
-          years.push(year);
-          return years;
-      }
-      
-  }),[]);
-  console.log(years);*/
   
 function mouseOverHandler(d,i){     
             //console.log('over');

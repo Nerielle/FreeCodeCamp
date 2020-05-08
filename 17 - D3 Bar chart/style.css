@@ -7,17 +7,10 @@
     pointer-events: all;
 }
 
-.left-bottom-margin {
-    margin-left: 30px;
-    margin-bottom: 30px;
-}
-
 #group {
     pointer-events: all;
 }
 
-#x-axis,
-#y-axis {}
 
 .bar:hover {
     fill: #E7009B;
@@ -25,9 +18,9 @@
 }
 
 #tooltip {
-    border: 1px solid black;
+    border: 1px solid #7D3A67;
     background: antiquewhite;
-    color: black;
+    color: #64545F;
     text-align: center;
     border-radius: 5px;
     width: 100px;
