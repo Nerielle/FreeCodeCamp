@@ -10,11 +10,14 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
   
 function mouseOverHandler(d,i){     
             //console.log('over');
-            d3.select('#tooltip').style('opacity', '1')
-                .style('left', (i * barWidth + leftPadding) + 'px')
+            var extracted1 = JSON.stringify(d).split(",")
+                            .join('<br/>')
+                            .substring(1);
+    d3.select('#tooltip').style('opacity', '1')
+                .style('left', d3.event.pageX + 'px')
                 .style('top', d3.event.pageY + 'px')
-                .attr('data-date', d[0])
-                .html(new Date(d[0]).toLocaleDateString() + '<br/> ' + d[1]);}
+                .attr('data-year', d.Year)
+                .html(extracted1.substring(0, extracted1.length - 2));}
     
 function mouseOutEventHandler(d){
            // console.log('out');
@@ -24,7 +27,7 @@ function mouseOutEventHandler(d){
     
  function mouseMovingHandler (d,i) {
         //console.log('move');
-    tooltip.style("top", d3.event.pageY+"px").style("left",(i * barWidth + leftPadding) + 'px');}
+    tooltip.style("top", d3.event.pageY+"px").style("left", d3.event.pageX + 'px');}
     
   let leftPadding = 70;
   let topPadding = 20;
@@ -98,15 +101,14 @@ function mouseOutEventHandler(d){
         .enter()
         .append('circle')
         .attr('class', 'dot')
-        .attr('data-xvalue', d=>d.Year)
-        .attr('data-yvalue', d=>d.Time )
+        .attr('data-xvalue', d => d.Year)
+        .attr('data-yvalue', d => new Date(d.Seconds * 1000) )
         .attr('cx', d=>  xScale(d.Year))
         .attr('cy', d=>{
                 let time = times.find( t =>t[1] == d.Seconds);     
                 return yScale(time[0]);})
-        .attr('r', '5px');
-      /* 
+        .attr('r', '5px')       
         .on('mouseover', mouseOverHandler)
         .on('mouseout',  mouseOutEventHandler )
-        .on('mousemove', mouseMovingHandler);*/
+        .on('mousemove', mouseMovingHandler);
 })
