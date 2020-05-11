@@ -34,11 +34,15 @@ function mouseOutEventHandler(d){
     let innerHeight = height - padding - topPadding;
     let innerWidth = width - padding - leftPadding;
 
-    let xScale = d3.scaleTime()               
+    var minMaxYears = d3.extent(data.map(d=>d.Year));
+      
+    let xScale = d3.scaleLinear()
+                .domain([minMaxYears[0] - 1, minMaxYears[1] + 1])
                 .range([0, innerWidth]);
     
+    
     var timeFormat = '%M:%S';
-    let xAxis = d3.axisBottom(xScale);
+    let xAxis = d3.axisBottom(xScale).tickFormat(d3.format("d"));
     
     var times  = data.map( t=> {
         
@@ -50,11 +54,10 @@ function mouseOutEventHandler(d){
     
     var datesOnly = times.map(x=> x[0]);
     
-    var extracted1 = d3.extent(datesOnly);
-    console.log(extracted1)
+    console.log(d3.extent(datesOnly))
     let yScale = d3.scaleTime()
-                .domain(extracted1)
-                .range([0,innerHeight]);
+                .domain( d3.extent(datesOnly))
+                .range([innerHeight, 0]);
     
     var filteredTimeTicks = times.filter(t => t[0].getSeconds()%5 == 0).map(x=>x[0]);
     
@@ -97,11 +100,10 @@ function mouseOutEventHandler(d){
         .attr('class', 'dot')
         .attr('data-xvalue', d=>d.Year)
         .attr('data-yvalue', d=>d.Time )
-        .attr('cx', (d, i)=> xScale(d.Year))
+        .attr('cx', d=>  xScale(d.Year))
         .attr('cy', d=>{
-        let time = times.find( t =>t[1] == d.Seconds);
-        console.log(d, time, yScale(time[0]));
-        return yScale(time[0]);})
+                let time = times.find( t =>t[1] == d.Seconds);     
+                return yScale(time[0]);})
         .attr('r', '5px');
       /* 
         .on('mouseover', mouseOverHandler)
