@@ -33,9 +33,6 @@ function mouseOutEventHandler(d){
   let width=800;
     let innerHeight = height - padding - topPadding;
     let innerWidth = width - padding - leftPadding;
-    
-  let minDate = new Date(d3.min(data, d=> d.Year)).getYear();
-  let maxDate = new Date(d3.max(data, d=> d.Year)).getYear();
 
     let xScale = d3.scaleTime()               
                 .range([0, innerWidth]);
@@ -47,16 +44,23 @@ function mouseOutEventHandler(d){
         
         var ms = t.Seconds * 1000;
         var date = new Date(ms);
-        console.log(t.Time, date, d3.timeFormat(timeFormat)(date));
-        return date;
+     
+        return [date, t.Seconds];
     })
     
-    let yScale = d3.scaleTime()
-                .domain(d3.extent(times))
-                .range([innerHeight, 0]);
+    var datesOnly = times.map(x=> x[0]);
     
-    var filteredTimeTicks = times.filter(t => t.getSeconds()%5 == 0);
-    let yAxis = d3.axisLeft(yScale).tickValues(  filteredTimeTicks).tickFormat(t=>d3.timeFormat(timeFormat)(t));
+    var extracted1 = d3.extent(datesOnly);
+    console.log(extracted1)
+    let yScale = d3.scaleTime()
+                .domain(extracted1)
+                .range([0,innerHeight]);
+    
+    var filteredTimeTicks = times.filter(t => t[0].getSeconds()%5 == 0).map(x=>x[0]);
+    
+    let yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat(timeFormat));
+/*    
+    .tickValues(  filteredTimeTicks).tickFormat(t=>d3.timeFormat(timeFormat)(t));*/
     
  var section = d3.select('section');
     var svg = section
@@ -92,9 +96,12 @@ function mouseOutEventHandler(d){
         .append('circle')
         .attr('class', 'dot')
         .attr('data-xvalue', d=>d.Year)
-        .attr('data-yvalue', d=>d.Time)
-        .attr('rx', (d, i)=> xScale(d.Year))
-        .attr('ry', (d, i)=> yScale(d.Time))
+        .attr('data-yvalue', d=>d.Time )
+        .attr('cx', (d, i)=> xScale(d.Year))
+        .attr('cy', d=>{
+        let time = times.find( t =>t[1] == d.Seconds);
+        console.log(d, time, yScale(time[0]));
+        return yScale(time[0]);})
         .attr('r', '5px');
       /* 
         .on('mouseover', mouseOverHandler)
