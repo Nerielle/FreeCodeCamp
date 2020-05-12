@@ -105,3 +105,19 @@ Calculator considers 'minus' sign as negative sign if it goes after another bina
 <li>FontAwesome</li>
 </ul>
 Pomodoro clock in action here <a href='https://codepen.io/nerielle/full/yLYMrey'>https://codepen.io/nerielle/full/yLYMrey</a>.
+
+<h3>D3 Scatter Plot</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>d3 </li>
+
+</ul>
+In action here <a href='https://codepen.io/nerielle/full/mdeKvjd'>https://codepen.io/nerielle/full/mdeKvjd</a>.
+
+<h3>D3 Bar Chart</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>d3 </li>
+
+</ul>
+In action here <a href='https://codepen.io/nerielle/full/pojPmgE'>https://codepen.io/nerielle/full/pojPmgE</a>.
