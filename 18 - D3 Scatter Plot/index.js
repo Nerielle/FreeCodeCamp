@@ -1,4 +1,3 @@
-
 fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
   .then(response => {
     return response.json();
@@ -113,19 +112,7 @@ function mouseOutEventHandler(d){
         .on('mouseout',  mouseOutEventHandler )
         .on('mousemove', mouseMovingHandler);
     
-  /*  group.append('g')
-    .attr('id', 'legend')    
-    .attr("transform","translate("+(minMaxYears[1] - 3) + ", " + (innerHeight/2) +")")
-    .append('rect')
-    .attr('fill', 'blue')
-    .attr('x', minMaxYears[1]- 3)
-    .attr('y', innerHeight/2)
-    .attr('width', '10px')
-    .attr('height', '5px')
-    .append('text')
-    .attr('x', minMaxYears[1] -2)
-    .attr('y', innerHeight/2)
-    .text('No doping registered');*/
+
     let colors = [{color:'blue', text: 'No doping registered'}, 
                  {color:'red', text: 'Doping registered'}];
    var legend= group.append('g')
@@ -151,4 +138,6 @@ legend.selectAll(".legend-label")
     .text(function(d){ return d.text})
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
+    .style( 'text-decoration', 'underline')
+    .style('text-decoration-color', '#595185')
 })
