@@ -101,6 +101,7 @@ function mouseOutEventHandler(d){
         .enter()
         .append('circle')
         .attr('class', 'dot')
+        .attr('fill', d=> d.Doping ? 'red' :'blue')
         .attr('data-xvalue', d => d.Year)
         .attr('data-yvalue', d => new Date(d.Seconds * 1000) )
         .attr('cx', d=>  xScale(d.Year))
@@ -111,4 +112,43 @@ function mouseOutEventHandler(d){
         .on('mouseover', mouseOverHandler)
         .on('mouseout',  mouseOutEventHandler )
         .on('mousemove', mouseMovingHandler);
+    
+  /*  group.append('g')
+    .attr('id', 'legend')    
+    .attr("transform","translate("+(minMaxYears[1] - 3) + ", " + (innerHeight/2) +")")
+    .append('rect')
+    .attr('fill', 'blue')
+    .attr('x', minMaxYears[1]- 3)
+    .attr('y', innerHeight/2)
+    .attr('width', '10px')
+    .attr('height', '5px')
+    .append('text')
+    .attr('x', minMaxYears[1] -2)
+    .attr('y', innerHeight/2)
+    .text('No doping registered');*/
+    let colors = [{color:'blue', text: 'No doping registered'}, 
+                 {color:'red', text: 'Doping registered'}];
+   var legend= group.append('g')
+    .attr('id', 'legend');
+    
+    legend.selectAll(".legend-label")
+  .data(colors)
+  .enter()
+  .append("circle")
+    .attr("cx", xScale(minMaxYears[1] -4))
+    .attr("cy", function(d,i){ return innerHeight*2/3 + i*25}) 
+    .attr("r", 7)
+    .style("fill", function(d){ return d.color;})
+
+
+legend.selectAll(".legend-label")
+  .data(colors)
+  .enter()
+  .append("text")
+    .attr("x", xScale(minMaxYears[1] -4) +20 )
+    .attr("y", function(d,i){ return  innerHeight*2/3 + i*25}) 
+
+    .text(function(d){ return d.text})
+    .attr("text-anchor", "left")
+    .style("alignment-baseline", "middle")
 })

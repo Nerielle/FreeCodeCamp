@@ -1,9 +1,9 @@
 
 
 .graph {
-    border: 1px solid #7D3A67;
-    box-shadow: 7px 7px 2px 1px #7D3A67;
-    fill: #CD008A;
+    border: 1px solid #595185;
+    box-shadow: 7px 7px 2px 1px #595185;
+
     pointer-events: all;
 }
 
@@ -16,8 +16,9 @@
     pointer-events: all;
 }
 
-#x-axis,
-#y-axis {}
+#legend{
+    border: 1px solid #595185;
+}
 
 .bar:hover {
     fill: #E7009B;
