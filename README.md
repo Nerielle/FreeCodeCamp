@@ -80,7 +80,7 @@ Plain css project from "Responsive Web Design Projects" challenge https://codepe
 </ul>
 Simple React app from Freecodecamp Challenge - https://codepen.io/nerielle/pen/BaNgdWW
 
-<h3>Simple Drum Machine</h3>
+<h3>14 - Simple Drum Machine</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>React</li>
@@ -88,7 +88,7 @@ Simple React app from Freecodecamp Challenge - https://codepen.io/nerielle/pen/B
 </ul>
 Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/full/xxwbzJB - here it is in action
 
-<h3>Simple React Calculator</h3>
+<h3>15 - Simple React Calculator</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>React</li>
@@ -97,7 +97,7 @@ Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/full/x
 Simple React app from FreeCodeCamp Challenge. https://codepen.io/nerielle/pen/yLYaMBX - here it is in action.
 Calculator considers 'minus' sign as negative sign if it goes after another binary operation. Calculator considers only last operation if there were several operators entered consecutively. Calculator uses <b>Reverse Polish Notation</b>.
 
-<h3>React Pomodoro Clock</h3>
+<h3>16 - React Pomodoro Clock</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>React</li>
@@ -106,7 +106,17 @@ Calculator considers 'minus' sign as negative sign if it goes after another bina
 </ul>
 Pomodoro clock in action here <a href='https://codepen.io/nerielle/full/yLYMrey'>https://codepen.io/nerielle/full/yLYMrey</a>.
 
-<h3>D3 Scatter Plot</h3>
+
+
+<h3>17 - D3 Bar Chart</h3>
+<h5>Dependencies</h5>
+<ul>
+<li>d3 </li>
+
+</ul>
+In action here <a href='https://codepen.io/nerielle/full/pojPmgE'>https://codepen.io/nerielle/full/pojPmgE</a>.
+
+<h3>18 - D3 Scatter Plot</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>d3 </li>
@@ -114,10 +124,10 @@ Pomodoro clock in action here <a href='https://codepen.io/nerielle/full/yLYMrey'
 </ul>
 In action here <a href='https://codepen.io/nerielle/full/mdeKvjd'>https://codepen.io/nerielle/full/mdeKvjd</a>.
 
-<h3>D3 Bar Chart</h3>
+<h3>19 - D3 Heat Map</h3>
 <h5>Dependencies</h5>
 <ul>
 <li>d3 </li>
 
 </ul>
-In action here <a href='https://codepen.io/nerielle/full/pojPmgE'>https://codepen.io/nerielle/full/pojPmgE</a>.
+In action here <a href='https://codepen.io/nerielle/pen/xxwJzoQ'>https://codepen.io/nerielle/pen/xxwJzoQ</a>.

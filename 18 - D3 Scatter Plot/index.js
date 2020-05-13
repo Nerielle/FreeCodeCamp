@@ -123,7 +123,7 @@ function mouseOutEventHandler(d){
   .enter()
   .append("circle")
     .attr("cx", xScale(minMaxYears[1] -4))
-    .attr("cy", function(d,i){ return innerHeight*2/3 + i*25}) 
+    .attr("cy", function(d,i){ return innerHeight*2/3 + i*30}) 
     .attr("r", 7)
     .style("fill", function(d){ return d.color;})
 
@@ -133,11 +133,11 @@ legend.selectAll(".legend-label")
   .enter()
   .append("text")
     .attr("x", xScale(minMaxYears[1] -4) +20 )
-    .attr("y", function(d,i){ return  innerHeight*2/3 + i*25}) 
+    .attr("y", function(d,i){ return  innerHeight*2/3 + i*30}) 
 
     .text(function(d){ return d.text})
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
     .style( 'text-decoration', 'underline')
-    .style('text-decoration-color', '#595185')
+    .style('text-decoration-color', '#595185');
 })
