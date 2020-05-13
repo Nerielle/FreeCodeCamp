@@ -1,0 +1,53 @@
+
+
+.graph {
+    border: 1px solid #595185;
+    box-shadow: 7px 7px 2px 1px #595185;
+
+    pointer-events: all;
+}
+
+.left-bottom-margin {
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+
+#group {
+    pointer-events: all;
+}
+#legend{
+    font-size: 16px;
+}
+
+.bar:hover {
+    fill: #E7009B;
+    pointer-events: all;
+}
+
+#tooltip {
+    border: 1px solid black;
+    background: antiquewhite;
+    color: black;
+    text-align: left;
+    border-radius: 5px;
+   padding: 7px;
+}
+
+
+body{
+    height: 100vh;
+    display: flex;
+
+    align-content: space-around;
+    align-items: center;
+
+    justify-content:center;
+    flex-direction: column;
+}
+section{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  height: 700;
+    width: 900;
+}
