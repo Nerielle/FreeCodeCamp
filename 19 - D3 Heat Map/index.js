@@ -1,12 +1,9 @@
-fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json')
+fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json')
   .then(response => {
     return response.json();
   })
   .then((data) => {
 
-  
-
-  
 function mouseOverHandler(d,i){     
             //console.log('over');
             var extracted1 = JSON.stringify(d).split(",")
@@ -31,12 +28,39 @@ function mouseOutEventHandler(d){
   let leftPadding = 70;
   let topPadding = 20;
   let padding = 30;
-  let height =600;
-  let width=800;
-    let innerHeight = height - padding - topPadding;
-    let innerWidth = width - padding - leftPadding;
+  let height = 600;
+  let width = 1200;
+  let innerHeight = height - padding - topPadding;
+  let innerWidth = width - padding - leftPadding;
+  var colorScale = d3.scaleLinear().domain([1,10])
+                    .range(['#4C34C5', '#FA2837']);
+    
+    var section = d3.select('section');
+    var svg = section
+            .append('svg')
+            .attr('class', 'graph')
+            .attr("width", width)
+            .attr("height", height);
+  
+   var years = data.monthlyVariance.reduce((acc, x) => {
+       
+            if(acc.includes(x.year)){
+                return acc;
+            }
+            acc.push(x.year);
+       return acc;
+    },[]);
+ 
+var xScale = d3.scaleLinear().domain(d3.extent(years)).range([0,innerWidth]);
 
-    var minMaxYears = d3.extent(data.map(d=>d.Year));
+   var xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d')); 
+   svg.append('g')
+        .attr('id','x-axis')
+        .attr('stroke-width', '1')
+        .attr('transform', 'translate('+0+','+(innerHeight )+')')
+        .call(xAxis);
+
+   /* var minMaxYears = d3.extent(data.map(d=>d.Year));
       
     let xScale = d3.scaleLinear()
                 .domain([minMaxYears[0] - 1, minMaxYears[1] + 1])
@@ -64,15 +88,10 @@ function mouseOutEventHandler(d){
     var filteredTimeTicks = times.filter(t => t[0].getSeconds()%5 == 0).map(x=>x[0]);
     
     let yAxis = d3.axisLeft(yScale).tickFormat(d3.timeFormat(timeFormat));
-/*    
-    .tickValues(  filteredTimeTicks).tickFormat(t=>d3.timeFormat(timeFormat)(t));*/
     
- var section = d3.select('section');
-    var svg = section
-            .append('svg')
-            .attr('class', 'graph')
-            .attr("width", width)
-            .attr("height", height);
+    .tickValues(  filteredTimeTicks).tickFormat(t=>d3.timeFormat(timeFormat)(t));
+    
+ 
  var group =   svg.append('g')
         .attr('id', 'group')
         .attr('transform', 'translate(' + leftPadding + ', '+topPadding+')')
@@ -139,5 +158,5 @@ legend.selectAll(".legend-label")
     .attr("text-anchor", "left")
     .style("alignment-baseline", "middle")
     .style( 'text-decoration', 'underline')
-    .style('text-decoration-color', '#595185');
+    .style('text-decoration-color', '#595185');*/
 })
