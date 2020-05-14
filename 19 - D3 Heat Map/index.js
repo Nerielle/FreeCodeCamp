@@ -26,10 +26,10 @@ function mouseOutEventHandler(d){
     tooltip.style("top", d3.event.pageY+"px").style("left", d3.event.pageX + 'px');}
     
   let leftPadding = 70;
-  let topPadding = 20;
+  let topPadding = 75;
   let padding = 30;
   let height = 600;
-  let width = 1200;
+  let width = 1000;
   let innerHeight = height - padding - topPadding;
   let innerWidth = width - padding - leftPadding;
   var colorScale = d3.scaleLinear().domain([1,10])
@@ -41,7 +41,24 @@ function mouseOutEventHandler(d){
             .attr('class', 'graph')
             .attr("width", width)
             .attr("height", height);
-  
+    var header = svg.append('g') ;
+    
+                    header.append('text')
+                    .attr('x', innerWidth/2)
+                    .attr('y', '30')
+                    .text('Monthly Global Land-Surface Temperature')
+                    .attr('id', 'title');
+    header.append('text')
+        .attr('id','description')
+        .attr('x', innerWidth/2)
+        .attr('y', '60')
+        .text('1753 - 2015: base temperature 8.66℃');
+                   
+   var group =   svg.append('g')
+        .attr('id', 'group')
+        .attr('transform', 'translate(' + leftPadding + ', '+topPadding+')')
+        .style('pointer-events', 'all');
+    
    var years = data.monthlyVariance.reduce((acc, x) => {
        
             if(acc.includes(x.year)){
@@ -54,11 +71,23 @@ function mouseOutEventHandler(d){
 var xScale = d3.scaleLinear().domain(d3.extent(years)).range([0,innerWidth]);
 
    var xAxis = d3.axisBottom(xScale).tickFormat(d3.format('d')); 
-   svg.append('g')
+   group.append('g')
         .attr('id','x-axis')
         .attr('stroke-width', '1')
         .attr('transform', 'translate('+0+','+(innerHeight )+')')
         .call(xAxis);
+    var months = ['January', 'February', 'March', 'April', 'May','June','July', 'August','September','October','November', 'December'];
+    
+    var yScale = d3.scaleLinear().domain([1,12]).range([0, innerHeight]);
+    
+    var yAxis = d3.axisLeft(yScale).tickFormat((d,i)=> months[i]);
+    
+      group.append('g')
+        .attr('stroke-width', '1')
+        .attr('id','y-axis')
+        .attr('transform', 'translate('+0+','+0+')')
+        .call(yAxis);
+    
 
    /* var minMaxYears = d3.extent(data.map(d=>d.Year));
       
@@ -92,10 +121,7 @@ var xScale = d3.scaleLinear().domain(d3.extent(years)).range([0,innerWidth]);
     .tickValues(  filteredTimeTicks).tickFormat(t=>d3.timeFormat(timeFormat)(t));
     
  
- var group =   svg.append('g')
-        .attr('id', 'group')
-        .attr('transform', 'translate(' + leftPadding + ', '+topPadding+')')
-        .style('pointer-events', 'all');
+
     
     var tooltip = d3.select('body').append('div')
                 .attr("id", "tooltip")

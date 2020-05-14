@@ -1,5 +1,12 @@
 
-
+#title{
+    text-anchor: middle;
+    font-size:24px;
+}
+#description{
+     text-anchor: middle;
+    font-size: 18px;
+}
 .graph {
     border: 1px solid #595185;
     box-shadow: 7px 7px 2px 1px #595185;
@@ -49,5 +56,5 @@ section{
     align-content: center;
     justify-content: center;
   height: 700;
-    width: 900;
+    width: 1200;
 }
