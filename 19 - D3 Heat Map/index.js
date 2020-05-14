@@ -6,13 +6,15 @@ fetch('https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/maste
 
 function mouseOverHandler(d,i){     
             //console.log('over');
+
             var extracted1 = JSON.stringify(d).split(",")
                             .join('<br/>')
                             .substring(1);
-    d3.select('#tooltip').style('opacity', '1')
+    d3.select('#tooltip').attr('data-year', d.year)
+                .style('opacity', '1')
                 .style('left', d3.event.pageX + 'px')
                 .style('top', d3.event.pageY + 'px')
-                .attr('data-year', d.Year)
+               
                 .html(extracted1.substring(0, extracted1.length - 2));}
     
 function mouseOutEventHandler(d){
@@ -26,10 +28,10 @@ function mouseOutEventHandler(d){
     tooltip.style("top", d3.event.pageY+"px").style("left", d3.event.pageX + 'px');}
     
   let leftPadding = 70;
-  let topPadding = 80;
+  let topPadding = 115;
   let padding = 30;
   let height = 600;
-  let width = 1000;
+  let width = 1200;
   let innerHeight = height - padding - topPadding;
   let innerWidth = width - padding - leftPadding;
     

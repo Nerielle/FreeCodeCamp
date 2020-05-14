@@ -26,9 +26,9 @@
     font-size: 16px;
 }
 
-.bar:hover {
-    fill: #E7009B;
-    pointer-events: all;
+.cell:hover {
+
+    stroke:#E7009B;
 }
 
 #tooltip {
@@ -56,5 +56,5 @@ section{
     align-content: center;
     justify-content: center;
   height: 700;
-    width: 1200;
+    width: 100%;
 }
